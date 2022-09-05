@@ -20,7 +20,8 @@ public class result_manager : MonoBehaviour
     #endregion
 
     #region Local Variable
-    List<Dictionary<string, int>> separate_stats;
+    List<Dictionary<string, int>> separate_stats = new List<Dictionary<string, int>>();
+    List<Dictionary<string, int>> rune_stat_infos = new List<Dictionary<string, int>>();
     List<string> rune_type;
     List<string> even_rune_stat_type;
     List<string> prefer_stat_type;
@@ -54,17 +55,12 @@ public class result_manager : MonoBehaviour
         {
             {"SPD", 10}, {"HP", 9}, {"ATK", 9}, {"DEF", 9}, {"CRI RATE", 8}, {"CRI DMG", 8}, {"ACC", 8}, {"RES", 8}
         };
-
-        Debug.Log(separate_stats.Count);
-
         separate_stats.Add(separate_stat_1);
         separate_stats.Add(separate_stat_2);
         separate_stats.Add(separate_stat_3);
         separate_stats.Add(separate_stat_4);
         separate_stats.Add(separate_stat_5);
         separate_stats.Add(separate_stat_6);
-
-        Debug.Log(separate_stats.Count);
     }
     public void Start_StatSetting()
     {
@@ -111,27 +107,27 @@ public class result_manager : MonoBehaviour
             {
                 case 1:
                     plus_atk += 160;
-
+                    CalStatFromPreferStat(rune_number);
                     break;
                 case 2:
                     CheckEvenRuneStat(rune_number);
-
+                    CalStatFromPreferStat(rune_number);
                     break;
                 case 3:
                     plus_def += 160;
-
+                    CalStatFromPreferStat(rune_number);
                     break;
                 case 4:
                     CheckEvenRuneStat(rune_number);
-
+                    CalStatFromPreferStat(rune_number);
                     break;
                 case 5:
                     plus_hp += 2448;
-
+                    CalStatFromPreferStat(rune_number);
                     break;
                 case 6:
                     CheckEvenRuneStat(rune_number);
-
+                    CalStatFromPreferStat(rune_number);
                     break;
             }
         }
@@ -170,9 +166,23 @@ public class result_manager : MonoBehaviour
     void CalStatFromPreferStat(int number)
     {
         Dictionary<string, int> stat_scoreboard = separate_stats[number - 1];
-
+        // get rune data from seleted data.
+        even_rune_stat_type = selected_data.GetComponent<select_data_control>().even_rune_stat_type;
         // check prefer stat and plus score in separte_stats
+        prefer_stat_type = selected_data.GetComponent<select_data_control>().prefer_stat_type;
+        if (stat_scoreboard.ContainsKey(prefer_stat_type[0])) stat_scoreboard[prefer_stat_type[0]] += 3;
+        if (stat_scoreboard.ContainsKey(prefer_stat_type[1])) stat_scoreboard[prefer_stat_type[0]] += 2;
+        if (stat_scoreboard.ContainsKey(prefer_stat_type[2])) stat_scoreboard[prefer_stat_type[0]] += 1;
 
+        // calculate stat
+        Dictionary<string, int> temp_rune_info = new Dictionary<string, int>();
+        for (int i = 0; i<4; i++)
+        {
+
+        }
+
+        // add stat to rune_stat_infos
+        // rune_stat_infos
     }
 
     public void OnRuneClick(int i)
