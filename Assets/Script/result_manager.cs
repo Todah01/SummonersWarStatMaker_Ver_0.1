@@ -20,6 +20,10 @@ public class result_manager : MonoBehaviour
     #endregion
 
     #region Local Variable
+    Dictionary<string, int> stat_rainforce_value = new Dictionary<string, int>()
+    {
+        {"SPD", 6}, {"HP", 8}, {"ATK", 8}, {"DEF", 8}, {"CRI RATE", 6}, {"CRI DMG", 7}, {"ACC", 8}, {"RES", 8}
+    };
     List<Dictionary<string, int>> separate_stats = new List<Dictionary<string, int>>();
     List<Dictionary<string, int>> rune_stat_infos = new List<Dictionary<string, int>>();
     List<string> rune_type;
@@ -33,27 +37,27 @@ public class result_manager : MonoBehaviour
         // set separate_stats
         Dictionary<string, int> separate_stat_1 = new Dictionary<string, int>()
         {
-            {"SPD", 10}, {"HP", 9}, {"ATK", 9}, {"CRI RATE", 8}, {"CRI DMG", 8}, {"ACC", 8}, {"RES", 8}
+            {"SPD", 10}, {"HP", 10}, {"ATK", 10}, {"CRI RATE", 10}, {"CRI DMG", 10}, {"ACC", 10}, {"RES", 10}
         };
         Dictionary<string, int> separate_stat_2 = new Dictionary<string, int>()
         {
-            {"SPD", 10}, {"HP", 9}, {"ATK", 9}, {"DEF", 9}, {"CRI RATE", 8}, {"CRI DMG", 8}, {"ACC", 8}, {"RES", 8}
+            {"SPD", 10}, {"HP", 10}, {"ATK", 10}, {"DEF", 10}, {"CRI RATE", 10}, {"CRI DMG", 10}, {"ACC", 10}, {"RES", 10}
         };
         Dictionary<string, int> separate_stat_3 = new Dictionary<string, int>()
         {
-            {"SPD", 10}, {"HP", 9}, {"DEF", 9}, {"CRI RATE", 8}, {"CRI DMG", 8}, {"ACC", 8}, {"RES", 8}
+            {"SPD", 10}, {"HP", 10}, {"DEF", 10}, {"CRI RATE", 10}, {"CRI DMG", 10}, {"ACC", 10}, {"RES", 10}
         };
         Dictionary<string, int> separate_stat_4 = new Dictionary<string, int>()
         {
-            {"SPD", 10}, {"HP", 9}, {"ATK", 9}, {"DEF", 9}, {"CRI RATE", 8}, {"CRI DMG", 8}, {"ACC", 8}, {"RES", 8}
+            {"SPD", 10}, {"HP", 10}, {"ATK", 10}, {"DEF", 10}, {"CRI RATE", 10}, {"CRI DMG", 10}, {"ACC", 10}, {"RES", 10}
         };
         Dictionary<string, int> separate_stat_5 = new Dictionary<string, int>()
         {
-            {"SPD", 10}, {"HP", 9}, {"ATK", 9}, {"DEF", 9}, {"CRI RATE", 8}, {"CRI DMG", 8}, {"ACC", 8}, {"RES", 8}
+            {"SPD", 10}, {"HP", 10}, {"ATK", 10}, {"DEF", 10}, {"CRI RATE", 10}, {"CRI DMG", 10}, {"ACC", 10}, {"RES", 10}
         };
         Dictionary<string, int> separate_stat_6 = new Dictionary<string, int>()
         {
-            {"SPD", 10}, {"HP", 9}, {"ATK", 9}, {"DEF", 9}, {"CRI RATE", 8}, {"CRI DMG", 8}, {"ACC", 8}, {"RES", 8}
+            {"SPD", 10}, {"HP", 10}, {"ATK", 10}, {"DEF", 10}, {"CRI RATE", 10}, {"CRI DMG", 10}, {"ACC", 10}, {"RES", 10}
         };
         separate_stats.Add(separate_stat_1);
         separate_stats.Add(separate_stat_2);
@@ -133,7 +137,22 @@ public class result_manager : MonoBehaviour
         }
 
         // calculate plus stat from current stat
-
+        for(int i=0; i<rune_stat_infos.Count; i++)
+        {
+            //Debug.Log($"number_{i + 1} -> ");
+            foreach(var dict in rune_stat_infos[i])
+            {
+                //Debug.Log(dict.Key + " : " + dict.Value);
+                if (dict.Key == "SPD") plus_spd += dict.Value;
+                else if (dict.Key == "HP") plus_hp += Mathf.RoundToInt((float)cur_hp * (dict.Value / 100));
+                else if (dict.Key == "ATK") plus_hp += Mathf.RoundToInt((float)cur_hp * (dict.Value / 100));
+                else if (dict.Key == "DEF") plus_hp += Mathf.RoundToInt((float)cur_hp * (dict.Value / 100));
+                else if (dict.Key == "CRI RATE") plus_crirate += dict.Value;
+                else if (dict.Key == "CRI DMG") plus_cridmg += dict.Value;
+                else if (dict.Key == "RES") plus_res += dict.Value;
+                else if (dict.Key == "ACC") plus_acc += dict.Value;
+            }
+        }
     }
 
     void CheckEvenRuneStat(int number)
@@ -171,18 +190,121 @@ public class result_manager : MonoBehaviour
         // check prefer stat and plus score in separte_stats
         prefer_stat_type = selected_data.GetComponent<select_data_control>().prefer_stat_type;
         if (stat_scoreboard.ContainsKey(prefer_stat_type[0])) stat_scoreboard[prefer_stat_type[0]] += 3;
-        if (stat_scoreboard.ContainsKey(prefer_stat_type[1])) stat_scoreboard[prefer_stat_type[0]] += 2;
-        if (stat_scoreboard.ContainsKey(prefer_stat_type[2])) stat_scoreboard[prefer_stat_type[0]] += 1;
+        if (stat_scoreboard.ContainsKey(prefer_stat_type[1])) stat_scoreboard[prefer_stat_type[1]] += 2;
+        if (stat_scoreboard.ContainsKey(prefer_stat_type[2])) stat_scoreboard[prefer_stat_type[2]] += 1;
 
-        // calculate stat
         Dictionary<string, int> temp_rune_info = new Dictionary<string, int>();
-        for (int i = 0; i<4; i++)
-        {
 
+        // if rune number is odd number, just add stat to rune.
+        if (number % 2 == 1)
+        {
+            // set prefer basic stat to rune
+            for(int i=0; i<3; i++)
+            {
+                // check prefer stat and plus score in separte_stats
+                if (!stat_scoreboard.ContainsKey(prefer_stat_type[i]))
+                    continue;
+
+                int rainforce_value = CalRainforceValue(stat_rainforce_value[prefer_stat_type[i]]);
+                temp_rune_info.Add(prefer_stat_type[i], rainforce_value);
+            }
+
+            // set prefer extra basic stat to rune
+            foreach (string key in stat_scoreboard.Keys)
+            {
+                if (!temp_rune_info.ContainsKey(key))
+                {
+                    int rainforce_value = CalRainforceValue(stat_rainforce_value[key]);
+                    temp_rune_info.Add(key, rainforce_value);
+                }
+
+                if (temp_rune_info.Count == 4)
+                    break;
+            }
+
+            Debug.Log("rune number -> " + number);
+            foreach(var dict in temp_rune_info)
+            {
+                Debug.Log(dict.Key + " : " + dict.Value);
+            }
+            // rune rainforce
+            for (int i = 0; i < 4; i++)
+            {
+                string rainforce_stat = CalRainforceStatNumber(temp_rune_info);
+                int rainforce_value = CalRainforceValue(temp_rune_info[rainforce_stat]);
+
+                temp_rune_info[rainforce_stat] += rainforce_value;
+            }
+        }
+        // if rune number is even number, check even number main stat before add stat to rune.
+        else
+        {
+            // set prefer basic stat to rune
+            for (int i = 0; i < 3; i++)
+            {
+                // check stat between even rune stat and prefer stat
+                string even_stat_type = "";
+                if (number == 2) even_stat_type = even_rune_stat_type[0];
+                else if (number == 4) even_stat_type = even_rune_stat_type[1];
+                else if (number == 6) even_stat_type = even_rune_stat_type[2];
+
+                if (prefer_stat_type[i] == even_stat_type)
+                    continue;
+
+                // check prefer stat and plus score in separte_stats
+                if (!stat_scoreboard.ContainsKey(prefer_stat_type[i]))
+                    continue;
+
+                int rainforce_value = CalRainforceValue(stat_rainforce_value[prefer_stat_type[i]]);
+                temp_rune_info.Add(prefer_stat_type[i], rainforce_value);
+            }
+
+            // set prefer extra basic stat to rune
+            foreach (string key in stat_scoreboard.Keys)
+            {
+                if (!temp_rune_info.ContainsKey(key))
+                {
+                    int rainforce_value = CalRainforceValue(stat_rainforce_value[key]);
+                    temp_rune_info.Add(key, rainforce_value);
+                }
+
+                if (temp_rune_info.Count == 4)
+                    break;
+            }
+            Debug.Log("rune number -> " + number);
+            foreach (var dict in temp_rune_info)
+            {
+                Debug.Log(dict.Key + " : " + dict.Value);
+            }
+            // rune rainforce
+            for (int i = 0; i < 4; i++)
+            {
+                string rainforce_stat = CalRainforceStatNumber(temp_rune_info);
+                int rainforce_value = CalRainforceValue(temp_rune_info[rainforce_stat]);
+
+                temp_rune_info[rainforce_stat] += rainforce_value;
+            }
         }
 
         // add stat to rune_stat_infos
-        // rune_stat_infos
+        rune_stat_infos.Add(temp_rune_info);
+    }
+    int CalRainforceValue(int rainforce_value)
+    {
+        int percentage = Random.Range(1, 100);
+        if (percentage > 0 && percentage <= 10) return rainforce_value -= 2;
+        else if (percentage > 10 && percentage <= 30) return rainforce_value -= 1;
+        else return rainforce_value;
+    }
+    string CalRainforceStatNumber(Dictionary<string, int> rainforce_stat_dict)
+    {
+        List<string> temp = new List<string>(rainforce_stat_dict.Keys);
+
+        int percentage = Random.Range(1, 100);
+        if (percentage > 0 && percentage <= 5) return temp[3];
+        else if (percentage > 5 && percentage <= 15) return temp[2];
+        else if (percentage > 15 && percentage <= 30) return temp[1];
+        else return temp[0];
     }
 
     public void OnRuneClick(int i)
