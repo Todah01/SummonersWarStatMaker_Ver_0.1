@@ -222,32 +222,35 @@ public class result_manager : MonoBehaviour
                     break;
             }
 
-            Debug.Log("rune number -> " + number);
-            foreach(var dict in temp_rune_info)
-            {
-                Debug.Log(dict.Key + " : " + dict.Value);
-            }
             // rune rainforce
             for (int i = 0; i < 4; i++)
             {
                 string rainforce_stat = CalRainforceStatNumber(temp_rune_info);
-                int rainforce_value = CalRainforceValue(temp_rune_info[rainforce_stat]);
+                int rainforce_value = CalRainforceValue(stat_rainforce_value[rainforce_stat]);
 
                 temp_rune_info[rainforce_stat] += rainforce_value;
+                // Debug.Log(rainforce_stat + " : " + temp_rune_info[rainforce_stat] + " + " + rainforce_value);
+            }
+
+            Debug.Log("rune number -> " + number);
+            foreach (var dict in temp_rune_info)
+            {
+                Debug.Log(dict.Key + " : " + dict.Value);
             }
         }
         // if rune number is even number, check even number main stat before add stat to rune.
         else
         {
+            // get even rune stat
+            string even_stat_type = "";
+            if (number == 2) even_stat_type = even_rune_stat_type[0];
+            else if (number == 4) even_stat_type = even_rune_stat_type[1];
+            else if (number == 6) even_stat_type = even_rune_stat_type[2];
+
             // set prefer basic stat to rune
             for (int i = 0; i < 3; i++)
             {
                 // check stat between even rune stat and prefer stat
-                string even_stat_type = "";
-                if (number == 2) even_stat_type = even_rune_stat_type[0];
-                else if (number == 4) even_stat_type = even_rune_stat_type[1];
-                else if (number == 6) even_stat_type = even_rune_stat_type[2];
-
                 if (prefer_stat_type[i] == even_stat_type)
                     continue;
 
@@ -262,7 +265,7 @@ public class result_manager : MonoBehaviour
             // set prefer extra basic stat to rune
             foreach (string key in stat_scoreboard.Keys)
             {
-                if (!temp_rune_info.ContainsKey(key))
+                if (!temp_rune_info.ContainsKey(key) && key != even_stat_type)
                 {
                     int rainforce_value = CalRainforceValue(stat_rainforce_value[key]);
                     temp_rune_info.Add(key, rainforce_value);
@@ -271,18 +274,20 @@ public class result_manager : MonoBehaviour
                 if (temp_rune_info.Count == 4)
                     break;
             }
-            Debug.Log("rune number -> " + number);
-            foreach (var dict in temp_rune_info)
-            {
-                Debug.Log(dict.Key + " : " + dict.Value);
-            }
+
             // rune rainforce
             for (int i = 0; i < 4; i++)
             {
                 string rainforce_stat = CalRainforceStatNumber(temp_rune_info);
-                int rainforce_value = CalRainforceValue(temp_rune_info[rainforce_stat]);
+                int rainforce_value = CalRainforceValue(stat_rainforce_value[rainforce_stat]);
 
                 temp_rune_info[rainforce_stat] += rainforce_value;
+            }
+
+            Debug.Log("rune number -> " + number);
+            foreach (var dict in temp_rune_info)
+            {
+                Debug.Log(dict.Key + " : " + dict.Value);
             }
         }
 
