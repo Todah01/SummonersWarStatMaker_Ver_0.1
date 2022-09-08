@@ -136,17 +136,27 @@ public class result_manager : MonoBehaviour
             }
         }
 
+        //for (int i = 0; i < rune_stat_infos.Count; i++)
+        //{
+        //    Debug.Log($"rune number {i + 1} option -> ");
+        //    foreach (var dict in rune_stat_infos[i])
+        //    {
+        //        Debug.Log(dict.Key + " : " + dict.Value);
+        //    }
+        //}
+
         // calculate plus stat from current stat
-        for(int i=0; i<rune_stat_infos.Count; i++)
+        for (int i=0; i<rune_stat_infos.Count; i++)
         {
-            //Debug.Log($"number_{i + 1} -> ");
+            Debug.Log($"rune number {i + 1} option -> ");
             foreach(var dict in rune_stat_infos[i])
             {
-                //Debug.Log(dict.Key + " : " + dict.Value);
+                Debug.Log(dict.Key + " : " + dict.Value);
+
                 if (dict.Key == "SPD") plus_spd += dict.Value;
-                else if (dict.Key == "HP") plus_hp += Mathf.RoundToInt((float)cur_hp * (dict.Value / 100));
-                else if (dict.Key == "ATK") plus_hp += Mathf.RoundToInt((float)cur_hp * (dict.Value / 100));
-                else if (dict.Key == "DEF") plus_hp += Mathf.RoundToInt((float)cur_hp * (dict.Value / 100));
+                else if (dict.Key == "HP") plus_hp += Mathf.RoundToInt((float)cur_hp * (dict.Value / 100f));
+                else if (dict.Key == "ATK") plus_atk += Mathf.RoundToInt((float)cur_atk * (dict.Value / 100f));
+                else if (dict.Key == "DEF") plus_def += Mathf.RoundToInt((float)cur_def * (dict.Value / 100f));
                 else if (dict.Key == "CRI RATE") plus_crirate += dict.Value;
                 else if (dict.Key == "CRI DMG") plus_cridmg += dict.Value;
                 else if (dict.Key == "RES") plus_res += dict.Value;
@@ -229,13 +239,6 @@ public class result_manager : MonoBehaviour
                 int rainforce_value = CalRainforceValue(stat_rainforce_value[rainforce_stat]);
 
                 temp_rune_info[rainforce_stat] += rainforce_value;
-                // Debug.Log(rainforce_stat + " : " + temp_rune_info[rainforce_stat] + " + " + rainforce_value);
-            }
-
-            Debug.Log("rune number -> " + number);
-            foreach (var dict in temp_rune_info)
-            {
-                Debug.Log(dict.Key + " : " + dict.Value);
             }
         }
         // if rune number is even number, check even number main stat before add stat to rune.
@@ -283,13 +286,13 @@ public class result_manager : MonoBehaviour
 
                 temp_rune_info[rainforce_stat] += rainforce_value;
             }
-
-            Debug.Log("rune number -> " + number);
-            foreach (var dict in temp_rune_info)
-            {
-                Debug.Log(dict.Key + " : " + dict.Value);
-            }
         }
+
+        //Debug.Log(number);
+        //foreach (var dict in temp_rune_info)
+        //{
+        //    Debug.Log(dict.Key + " : " + dict.Value);
+        //}
 
         // add stat to rune_stat_infos
         rune_stat_infos.Add(temp_rune_info);
@@ -297,8 +300,8 @@ public class result_manager : MonoBehaviour
     int CalRainforceValue(int rainforce_value)
     {
         int percentage = Random.Range(1, 100);
-        if (percentage > 0 && percentage <= 10) return rainforce_value -= 2;
-        else if (percentage > 10 && percentage <= 30) return rainforce_value -= 1;
+        if (percentage > 0 && percentage <= 5) return rainforce_value -= 2;
+        else if (percentage > 5 && percentage <= 30) return rainforce_value -= 1;
         else return rainforce_value;
     }
     string CalRainforceStatNumber(Dictionary<string, int> rainforce_stat_dict)
