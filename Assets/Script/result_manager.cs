@@ -288,11 +288,18 @@ public class result_manager : MonoBehaviour
             }
         }
 
-        //Debug.Log(number);
-        //foreach (var dict in temp_rune_info)
-        //{
-        //    Debug.Log(dict.Key + " : " + dict.Value);
-        //}
+        // conversion rune stat
+        string converstion_stat = CalConverstionStatFromRune(temp_rune_info);
+        int converstion_stat_value = CalConversionStatValue(converstion_stat);
+        temp_rune_info[converstion_stat] = converstion_stat_value;
+
+        // grinding rune stat
+
+        Debug.Log(number);
+        foreach (var dict in temp_rune_info)
+        {
+            Debug.Log(dict.Key + " : " + dict.Value);
+        }
 
         // add stat to rune_stat_infos
         rune_stat_infos.Add(temp_rune_info);
@@ -313,6 +320,61 @@ public class result_manager : MonoBehaviour
         else if (percentage > 5 && percentage <= 15) return temp[2];
         else if (percentage > 15 && percentage <= 30) return temp[1];
         else return temp[0];
+    }
+    string CalConverstionStatFromRune(Dictionary<string, int> converstion_stat_dict)
+    {
+        string check_stat = "";
+        int check_max_value = -1;
+
+        foreach(var dict in converstion_stat_dict)
+        {
+            // excluding stat that is inefficient to use grinding stone.
+            if (dict.Key == "CRI RATE" || dict.Key == "CRI DMG" || dict.Key == "SPD")
+                continue;
+
+            // excluding stat that do not require conversion
+            if (dict.Value > stat_rainforce_value[dict.Key])
+                continue;
+
+            // get difference from check value
+            int check_value = stat_rainforce_value[dict.Key] - dict.Value;
+            if(check_value > check_max_value)
+            {
+                check_stat = dict.Key;
+                check_max_value = check_value;
+            }
+            else if(check_value == check_max_value)
+            {
+                if(prefer_stat_type.Contains(dict.Key) && prefer_stat_type.Contains(check_stat))
+                {
+                    // check stat priority from prefer stat list
+                    int difference = prefer_stat_type.IndexOf(dict.Key) - prefer_stat_type.IndexOf(check_stat);
+                    if(difference < 0)
+                    {
+                        check_stat = dict.Key;
+                        check_max_value = check_value;
+                    }
+                }
+                else if(prefer_stat_type.Contains(dict.Key) && !prefer_stat_type.Contains(check_stat))
+                {
+                    check_stat = dict.Key;
+                    check_max_value = check_value;
+                }
+            }
+        }
+        return check_stat;
+    }
+    int CalConversionStatValue(string conversion_stat)
+    {
+        int conversion_value = 0;
+        if (conversion_stat == "HP" || conversion_stat == "ATK" || conversion_stat == "DEF")
+            conversion_value = 13;
+        else if (conversion_stat == "RES" || conversion_stat == "ACC")
+            conversion_value = 11;
+        else if (conversion_stat == "SPD")
+            conversion_value = 10;
+
+        return conversion_value;
     }
 
     public void OnRuneClick(int i)
