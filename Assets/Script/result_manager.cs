@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -209,7 +210,7 @@ public class result_manager : MonoBehaviour
         if (number % 2 == 1)
         {
             // set prefer basic stat to rune
-            for(int i=0; i<3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 // check prefer stat and plus score in separte_stats
                 if (!stat_scoreboard.ContainsKey(prefer_stat_type[i]))
@@ -294,12 +295,23 @@ public class result_manager : MonoBehaviour
         temp_rune_info[converstion_stat] = converstion_stat_value;
 
         // grinding rune stat
-
-        Debug.Log(number);
-        foreach (var dict in temp_rune_info)
+        for (int i = 0; i < temp_rune_info.Count; i++)
         {
-            Debug.Log(dict.Key + " : " + dict.Value);
+            if(temp_rune_info.Keys.ToList()[i] == "HP" || temp_rune_info.Keys.ToList()[i] == "ATK" || temp_rune_info.Keys.ToList()[i] == "DEF")
+            {
+                temp_rune_info[temp_rune_info.Keys.ToList()[i]] += 10;
+            }
+            else if(temp_rune_info.Keys.ToList()[i] == "SPD")
+            {
+                temp_rune_info[temp_rune_info.Keys.ToList()[i]] += 5;
+            }
         }
+
+        //Debug.Log(number);
+        //foreach (var dict in temp_rune_info)
+        //{
+        //    Debug.Log(dict.Key + " : " + dict.Value);
+        //}
 
         // add stat to rune_stat_infos
         rune_stat_infos.Add(temp_rune_info);
