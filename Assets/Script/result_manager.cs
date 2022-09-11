@@ -98,10 +98,10 @@ public class result_manager : MonoBehaviour
         monster_plus_stats_divide[2].text = plus_def.ToString();
         monster_plus_stats_divide[3].text = plus_spd.ToString();
 
-        monster_stats_combine[0].text = (cur_crirate + plus_crirate).ToString() + "%";
+        monster_stats_combine[0].text = (Mathf.Min(100, cur_crirate + plus_crirate)).ToString() + "%";
         monster_stats_combine[1].text = (cur_cridmg + plus_cridmg).ToString() + "%";
-        monster_stats_combine[2].text = (cur_res + plus_res).ToString() + "%";
-        monster_stats_combine[3].text = (cur_acc + plus_acc).ToString() + "%";
+        monster_stats_combine[2].text = (Mathf.Min(100, cur_res + plus_res)).ToString() + "%";
+        monster_stats_combine[3].text = (Mathf.Min(100, cur_acc + plus_acc)).ToString() + "%";
     }
     void Cal_Stat(List<string> rune_type, List<string> even_rune_stat_type, List<string> prefer_stat_type, int hp, int atk, int def, int spd)
     {
@@ -213,7 +213,7 @@ public class result_manager : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 // check prefer stat and plus score in separte_stats
-                if (!stat_scoreboard.ContainsKey(prefer_stat_type[i]))
+                if (!stat_scoreboard.ContainsKey(prefer_stat_type[i]) || (!temp_rune_info.ContainsKey(prefer_stat_type[i])))
                     continue;
 
                 int rainforce_value = CalRainforceValue(stat_rainforce_value[prefer_stat_type[i]]);
@@ -259,7 +259,7 @@ public class result_manager : MonoBehaviour
                     continue;
 
                 // check prefer stat and plus score in separte_stats
-                if (!stat_scoreboard.ContainsKey(prefer_stat_type[i]))
+                if (!stat_scoreboard.ContainsKey(prefer_stat_type[i]) || (!temp_rune_info.ContainsKey(prefer_stat_type[i])))
                     continue;
 
                 int rainforce_value = CalRainforceValue(stat_rainforce_value[prefer_stat_type[i]]);
@@ -304,6 +304,24 @@ public class result_manager : MonoBehaviour
             else if(temp_rune_info.Keys.ToList()[i] == "SPD")
             {
                 temp_rune_info[temp_rune_info.Keys.ToList()[i]] += 5;
+            }
+        }
+
+        // set pre-option
+        if (cur_acc == 25)
+        {
+            if (!temp_rune_info.ContainsKey("ACC"))
+            {
+                int pre_option_value = CalRainforceValue(stat_rainforce_value["ACC"]);
+                temp_rune_info.Add("ACC", pre_option_value);
+            }
+        }
+        else if (cur_res == 40)
+        {
+            if (!temp_rune_info.ContainsKey("RES"))
+            {
+                int pre_option_value = CalRainforceValue(stat_rainforce_value["RES"]);
+                temp_rune_info.Add("RES", pre_option_value);
             }
         }
 
