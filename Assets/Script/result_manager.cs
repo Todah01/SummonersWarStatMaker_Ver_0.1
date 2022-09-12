@@ -145,25 +145,6 @@ public class result_manager : MonoBehaviour
         //        Debug.Log(dict.Key + " : " + dict.Value);
         //    }
         //}
-
-        // calculate plus stat from current stat
-        for (int i=0; i<rune_stat_infos.Count; i++)
-        {
-            Debug.Log($"rune number {i + 1} option -> ");
-            foreach(var dict in rune_stat_infos[i])
-            {
-                Debug.Log(dict.Key + " : " + dict.Value);
-
-                if (dict.Key == "SPD") plus_spd += dict.Value;
-                else if (dict.Key == "HP") plus_hp += Mathf.RoundToInt((float)cur_hp * (dict.Value / 100f));
-                else if (dict.Key == "ATK") plus_atk += Mathf.RoundToInt((float)cur_atk * (dict.Value / 100f));
-                else if (dict.Key == "DEF") plus_def += Mathf.RoundToInt((float)cur_def * (dict.Value / 100f));
-                else if (dict.Key == "CRI RATE") plus_crirate += dict.Value;
-                else if (dict.Key == "CRI DMG") plus_cridmg += dict.Value;
-                else if (dict.Key == "RES") plus_res += dict.Value;
-                else if (dict.Key == "ACC") plus_acc += dict.Value;
-            }
-        }
     }
 
     void CheckEvenRuneStat(int number)
@@ -195,8 +176,9 @@ public class result_manager : MonoBehaviour
 
     void CalStatFromPreferStat(int number)
     {
+        #region set scoreboard
         Dictionary<string, int> stat_scoreboard = separate_stats[number - 1];
-        // get rune data from seleted data.
+        // get rune data from seleted data
         even_rune_stat_type = selected_data.GetComponent<select_data_control>().even_rune_stat_type;
         // check prefer stat and plus score in separte_stats
         prefer_stat_type = selected_data.GetComponent<select_data_control>().prefer_stat_type;
@@ -204,7 +186,69 @@ public class result_manager : MonoBehaviour
         if (stat_scoreboard.ContainsKey(prefer_stat_type[1])) stat_scoreboard[prefer_stat_type[1]] += 2;
         if (stat_scoreboard.ContainsKey(prefer_stat_type[2])) stat_scoreboard[prefer_stat_type[2]] += 1;
 
+        // sort stat_scoreboard by value
+        stat_scoreboard.OrderByDescending(item => item.Key).ToDictionary(x => x.Key, x => x.Value);
+        #endregion
+
+        #region mim_stat_demand
+        List<int> min_demand_crirate = new List<int>() { 100, 85, 70 };
+        List<int> min_demand_acc = new List<int>() { 85, 70, 55 };
+        List<int> min_demand_res = new List<int>() { 100, 100, 100 };
+        int min_crirate = 0;
+        int min_acc = 0;
+        int min_res = 0;
+        bool prefer_option_on = false;
+        bool prefer_crirate = false;
+        bool prefer_acc = false;
+        bool prefer_res = false;
+        #endregion
+
+        // check prefer stat and set minimum stat
+        for (int i = 0; i < prefer_stat_type.Count; i++)
+        {
+            switch(prefer_stat_type[i])
+            {
+                case "CRI RATE":
+                    if (i == 0) min_crirate = 100;
+                    else if (i == 1) min_crirate = 85;
+                    else if (i == 2) min_crirate = 70;
+                    prefer_crirate = true;
+                    break;
+                case "ACC":
+                    if (i == 0) min_acc = 85;
+                    else if (i == 1) min_acc = 70;
+                    else if (i == 2) min_acc = 55;
+                    prefer_acc = true;
+                    break;
+                case "RES":
+                    min_res = 100;
+                    prefer_res = true;
+                    break;
+            }
+        }
+
+        // temp dict for save rune info
         Dictionary<string, int> temp_rune_info = new Dictionary<string, int>();
+
+        // set pre-option
+        if (number != 2 && prefer_acc)
+        {
+            if (!temp_rune_info.ContainsKey("ACC"))
+            {
+                prefer_option_on = true;
+                int pre_option_value = CalRainforceValue(stat_rainforce_value["ACC"]);
+                temp_rune_info.Add("ACC", pre_option_value);
+            }
+        }
+        else if (number != 2 && prefer_res)
+        {
+            if (!temp_rune_info.ContainsKey("RES"))
+            {
+                prefer_option_on = true;
+                int pre_option_value = CalRainforceValue(stat_rainforce_value["RES"]);
+                temp_rune_info.Add("RES", pre_option_value);
+            }
+        }
 
         // if rune number is odd number, just add stat to rune.
         if (number % 2 == 1)
@@ -236,7 +280,7 @@ public class result_manager : MonoBehaviour
             // rune rainforce
             for (int i = 0; i < 4; i++)
             {
-                string rainforce_stat = CalRainforceStatNumber(temp_rune_info);
+                string rainforce_stat = CalRainforceStatNumber(temp_rune_info, prefer_option_on);
                 int rainforce_value = CalRainforceValue(stat_rainforce_value[rainforce_stat]);
 
                 temp_rune_info[rainforce_stat] += rainforce_value;
@@ -282,7 +326,27 @@ public class result_manager : MonoBehaviour
             // rune rainforce
             for (int i = 0; i < 4; i++)
             {
-                string rainforce_stat = CalRainforceStatNumber(temp_rune_info);
+                string rainforce_stat = "";
+                if(number == 2)
+                {
+                    if (prefer_crirate && temp_rune_info.ContainsKey("CRI RATE"))
+                    {
+                        if (cur_crirate + plus_crirate < min_crirate)
+                            rainforce_stat = "CRI RATE";
+                    }
+                    else if (prefer_acc && temp_rune_info.ContainsKey("ACC"))
+                    {
+                        if (cur_acc + plus_acc < min_acc)
+                            rainforce_stat = "ACC";
+                    }
+                    else if (prefer_res && temp_rune_info.ContainsKey("RES"))
+                    {
+                        if (cur_acc + plus_acc < min_res)
+                            rainforce_stat = "RES";
+                    }
+                }
+                else rainforce_stat = CalRainforceStatNumber(temp_rune_info, prefer_option_on);
+
                 int rainforce_value = CalRainforceValue(stat_rainforce_value[rainforce_stat]);
 
                 temp_rune_info[rainforce_stat] += rainforce_value;
@@ -307,29 +371,24 @@ public class result_manager : MonoBehaviour
             }
         }
 
-        // set pre-option
-        if (cur_acc == 25)
+        Debug.Log(number);
+        foreach (var dict in temp_rune_info)
         {
-            if (!temp_rune_info.ContainsKey("ACC"))
-            {
-                int pre_option_value = CalRainforceValue(stat_rainforce_value["ACC"]);
-                temp_rune_info.Add("ACC", pre_option_value);
-            }
-        }
-        else if (cur_res == 40)
-        {
-            if (!temp_rune_info.ContainsKey("RES"))
-            {
-                int pre_option_value = CalRainforceValue(stat_rainforce_value["RES"]);
-                temp_rune_info.Add("RES", pre_option_value);
-            }
+            Debug.Log(dict.Key + " : " + dict.Value);
         }
 
-        //Debug.Log(number);
-        //foreach (var dict in temp_rune_info)
-        //{
-        //    Debug.Log(dict.Key + " : " + dict.Value);
-        //}
+        // calculate plus stat from current stat
+        foreach (var dict in temp_rune_info)
+        {
+            if (dict.Key == "SPD") plus_spd += dict.Value;
+            else if (dict.Key == "HP") plus_hp += Mathf.RoundToInt((float)cur_hp * (dict.Value / 100f));
+            else if (dict.Key == "ATK") plus_atk += Mathf.RoundToInt((float)cur_atk * (dict.Value / 100f));
+            else if (dict.Key == "DEF") plus_def += Mathf.RoundToInt((float)cur_def * (dict.Value / 100f));
+            else if (dict.Key == "CRI RATE") plus_crirate += dict.Value;
+            else if (dict.Key == "CRI DMG") plus_cridmg += dict.Value;
+            else if (dict.Key == "RES") plus_res += dict.Value;
+            else if (dict.Key == "ACC") plus_acc += dict.Value;
+        }
 
         // add stat to rune_stat_infos
         rune_stat_infos.Add(temp_rune_info);
@@ -341,15 +400,26 @@ public class result_manager : MonoBehaviour
         else if (percentage > 5 && percentage <= 30) return rainforce_value -= 1;
         else return rainforce_value;
     }
-    string CalRainforceStatNumber(Dictionary<string, int> rainforce_stat_dict)
+    string CalRainforceStatNumber(Dictionary<string, int> rainforce_stat_dict, bool prefer_option_check)
     {
         List<string> temp = new List<string>(rainforce_stat_dict.Keys);
 
         int percentage = Random.Range(1, 100);
-        if (percentage > 0 && percentage <= 5) return temp[3];
-        else if (percentage > 5 && percentage <= 15) return temp[2];
-        else if (percentage > 15 && percentage <= 30) return temp[1];
-        else return temp[0];
+
+        if(prefer_option_check)
+        {
+            if (percentage > 0 && percentage <= 5) return temp[4];
+            else if (percentage > 5 && percentage <= 15) return temp[3];
+            else if (percentage > 15 && percentage <= 30) return temp[2];
+            else return temp[1];
+        }
+        else
+        {
+            if (percentage > 0 && percentage <= 5) return temp[3];
+            else if (percentage > 5 && percentage <= 15) return temp[2];
+            else if (percentage > 15 && percentage <= 30) return temp[1];
+            else return temp[0];
+        }
     }
     string CalConverstionStatFromRune(Dictionary<string, int> converstion_stat_dict)
     {
