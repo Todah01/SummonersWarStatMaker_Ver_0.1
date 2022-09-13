@@ -18,6 +18,8 @@ public class result_manager : MonoBehaviour
     public Text[] monster_stats_divide;
     public Text[] monster_plus_stats_divide;
     public Text[] monster_stats_combine;
+    public int left_artifact_dropdown_values = 0, right_artifact_dropdown_values = 0;
+    public int artifact_hp = 0, artifact_def = 0, artifact_atk = 0;
     #endregion
 
     #region Local Variable
@@ -106,9 +108,9 @@ public class result_manager : MonoBehaviour
     void Cal_Stat(List<string> rune_type, List<string> even_rune_stat_type, List<string> prefer_stat_type, int hp, int atk, int def, int spd)
     {
         // repeat 6 times
-        for(int rune_number = 1; rune_number < 7; rune_number++)
+        for (int rune_number = 1; rune_number < 7; rune_number++)
         {
-            switch(rune_number)
+            switch (rune_number)
             {
                 case 1:
                     plus_atk += 160;
@@ -149,14 +151,14 @@ public class result_manager : MonoBehaviour
 
     void CheckEvenRuneStat(int number)
     {
-        if(number == 2)
+        if (number == 2)
         {
             if (even_rune_stat_type[0] == "SPD") plus_spd += 42;
             else if (even_rune_stat_type[0] == "HP") plus_hp += Mathf.RoundToInt((float)cur_hp * 0.63f);
             else if (even_rune_stat_type[0] == "ATK") plus_atk += Mathf.RoundToInt((float)cur_atk * 0.63f);
             else if (even_rune_stat_type[0] == "DEF") plus_def += Mathf.RoundToInt((float)cur_def * 0.63f);
         }
-        else if(number == 4)
+        else if (number == 4)
         {
             if (even_rune_stat_type[1] == "HP") plus_hp += Mathf.RoundToInt((float)cur_hp * 0.63f);
             else if (even_rune_stat_type[1] == "ATK") plus_atk += Mathf.RoundToInt((float)cur_atk * 0.63f);
@@ -164,7 +166,7 @@ public class result_manager : MonoBehaviour
             else if (even_rune_stat_type[1] == "CRI RATE") plus_crirate += 58;
             else if (even_rune_stat_type[1] == "CRI DMG") plus_cridmg += 80;
         }
-        else if(number == 6)
+        else if (number == 6)
         {
             if (even_rune_stat_type[2] == "HP") plus_hp += Mathf.RoundToInt((float)cur_hp * 0.63f);
             else if (even_rune_stat_type[2] == "ATK") plus_atk += Mathf.RoundToInt((float)cur_atk * 0.63f);
@@ -206,7 +208,7 @@ public class result_manager : MonoBehaviour
         // check prefer stat and set minimum stat
         for (int i = 0; i < prefer_stat_type.Count; i++)
         {
-            switch(prefer_stat_type[i])
+            switch (prefer_stat_type[i])
             {
                 case "CRI RATE":
                     if (i == 0) min_crirate = 100;
@@ -254,10 +256,10 @@ public class result_manager : MonoBehaviour
         if (number % 2 == 1)
         {
             // set prefer basic stat to rune
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < prefer_stat_type.Count; i++)
             {
                 // check prefer stat and plus score in separte_stats
-                if (!stat_scoreboard.ContainsKey(prefer_stat_type[i]) || (!temp_rune_info.ContainsKey(prefer_stat_type[i])))
+                if (!stat_scoreboard.ContainsKey(prefer_stat_type[i]) || !temp_rune_info.ContainsKey(prefer_stat_type[i]))
                     continue;
 
                 int rainforce_value = CalRainforceValue(stat_rainforce_value[prefer_stat_type[i]]);
@@ -275,6 +277,12 @@ public class result_manager : MonoBehaviour
 
                 if (temp_rune_info.Count == 4)
                     break;
+            }
+
+            Debug.Log("rune " + number);
+            foreach (var dict in temp_rune_info)
+            {
+                Debug.Log(dict.Key + " : " + dict.Value);
             }
 
             // rune rainforce
@@ -296,14 +304,14 @@ public class result_manager : MonoBehaviour
             else if (number == 6) even_stat_type = even_rune_stat_type[2];
 
             // set prefer basic stat to rune
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < prefer_stat_type.Count; i++)
             {
                 // check stat between even rune stat and prefer stat
                 if (prefer_stat_type[i] == even_stat_type)
                     continue;
 
                 // check prefer stat and plus score in separte_stats
-                if (!stat_scoreboard.ContainsKey(prefer_stat_type[i]) || (!temp_rune_info.ContainsKey(prefer_stat_type[i])))
+                if (!stat_scoreboard.ContainsKey(prefer_stat_type[i]) || !temp_rune_info.ContainsKey(prefer_stat_type[i]))
                     continue;
 
                 int rainforce_value = CalRainforceValue(stat_rainforce_value[prefer_stat_type[i]]);
@@ -323,11 +331,17 @@ public class result_manager : MonoBehaviour
                     break;
             }
 
+            Debug.Log("rune " + number);
+            foreach (var dict in temp_rune_info)
+            {
+                Debug.Log(dict.Key + " : " + dict.Value);
+            }
+
             // rune rainforce
             for (int i = 0; i < 4; i++)
             {
                 string rainforce_stat = "";
-                if(number == 2)
+                if (number == 2)
                 {
                     if (prefer_crirate && temp_rune_info.ContainsKey("CRI RATE"))
                     {
@@ -361,20 +375,14 @@ public class result_manager : MonoBehaviour
         // grinding rune stat
         for (int i = 0; i < temp_rune_info.Count; i++)
         {
-            if(temp_rune_info.Keys.ToList()[i] == "HP" || temp_rune_info.Keys.ToList()[i] == "ATK" || temp_rune_info.Keys.ToList()[i] == "DEF")
+            if (temp_rune_info.Keys.ToList()[i] == "HP" || temp_rune_info.Keys.ToList()[i] == "ATK" || temp_rune_info.Keys.ToList()[i] == "DEF")
             {
                 temp_rune_info[temp_rune_info.Keys.ToList()[i]] += 10;
             }
-            else if(temp_rune_info.Keys.ToList()[i] == "SPD")
+            else if (temp_rune_info.Keys.ToList()[i] == "SPD")
             {
                 temp_rune_info[temp_rune_info.Keys.ToList()[i]] += 5;
             }
-        }
-
-        Debug.Log(number);
-        foreach (var dict in temp_rune_info)
-        {
-            Debug.Log(dict.Key + " : " + dict.Value);
         }
 
         // calculate plus stat from current stat
@@ -406,7 +414,7 @@ public class result_manager : MonoBehaviour
 
         int percentage = Random.Range(1, 100);
 
-        if(prefer_option_check)
+        if (prefer_option_check)
         {
             if (percentage > 0 && percentage <= 5) return temp[4];
             else if (percentage > 5 && percentage <= 15) return temp[3];
@@ -426,7 +434,7 @@ public class result_manager : MonoBehaviour
         string check_stat = "";
         int check_max_value = -1;
 
-        foreach(var dict in converstion_stat_dict)
+        foreach (var dict in converstion_stat_dict)
         {
             // excluding stat that is inefficient to use grinding stone.
             if (dict.Key == "CRI RATE" || dict.Key == "CRI DMG" || dict.Key == "SPD")
@@ -438,24 +446,24 @@ public class result_manager : MonoBehaviour
 
             // get difference from check value
             int check_value = stat_rainforce_value[dict.Key] - dict.Value;
-            if(check_value > check_max_value)
+            if (check_value > check_max_value)
             {
                 check_stat = dict.Key;
                 check_max_value = check_value;
             }
-            else if(check_value == check_max_value)
+            else if (check_value == check_max_value)
             {
-                if(prefer_stat_type.Contains(dict.Key) && prefer_stat_type.Contains(check_stat))
+                if (prefer_stat_type.Contains(dict.Key) && prefer_stat_type.Contains(check_stat))
                 {
                     // check stat priority from prefer stat list
                     int difference = prefer_stat_type.IndexOf(dict.Key) - prefer_stat_type.IndexOf(check_stat);
-                    if(difference < 0)
+                    if (difference < 0)
                     {
                         check_stat = dict.Key;
                         check_max_value = check_value;
                     }
                 }
-                else if(prefer_stat_type.Contains(dict.Key) && !prefer_stat_type.Contains(check_stat))
+                else if (prefer_stat_type.Contains(dict.Key) && !prefer_stat_type.Contains(check_stat))
                 {
                     check_stat = dict.Key;
                     check_max_value = check_value;
@@ -477,19 +485,20 @@ public class result_manager : MonoBehaviour
         return conversion_value;
     }
 
+    // open rune window
     public void OnRuneClick(int i)
     {
         // get rune data from seleted data.
         even_rune_stat_type = selected_data.GetComponent<select_data_control>().even_rune_stat_type;
 
         // get rune img from rune box.
-        switch(i)
+        switch (i)
         {
             case 0:
                 rune_stat_name.text = "ATK + 160";
                 break;
             case 1:
-                if(even_rune_stat_type[0] == "SPD")
+                if (even_rune_stat_type[0] == "SPD")
                 {
                     rune_stat_name.text = even_rune_stat_type[0] + " + 42";
                 }
@@ -537,23 +546,116 @@ public class result_manager : MonoBehaviour
         Transform temp = Instantiate(rune_info_datas[i].transform.Find($"rune ({i + 1})"), rune_img_slot.transform.position, rune_img_slot.transform.rotation);
         temp.transform.SetParent(rune_img_slot.transform);
         temp.localScale = rune_img_slot.transform.localScale;
-        //rune_img_slot.sprite = rune_imgs[i].transform.Find($"rune ({i+1})").GetComponent<Image>().sprite;
-        //rune_img_pattern.sprite = rune_imgs[i].transform.Find($"rune_Image_ ({i+1})").GetComponent<Image>().sprite;
-        rune_info.SetActive(true); 
+        rune_info.SetActive(true);
     }
+    // close rune window
     public void OnRuneClose()
     {
         rune_info.SetActive(false);
 
         // delete child
         Transform[] child = rune_img_slot.GetComponentsInChildren<Transform>();
-        if(child != null)
+        if (child != null)
         {
-            for(int i=1; i<child.Length; i++)
+            for (int i = 1; i < child.Length; i++)
             {
                 if (child[i] != rune_img_slot.transform)
                     Destroy(child[i].gameObject);
             }
         }
+    }
+    // add artifact stat func
+    public void AddArtifactStat(string dir, int value)
+    {
+        // check artifact type
+        if(dir == "left")
+        {
+            // clear cur artifact stat and reset plus stat
+            if (left_artifact_dropdown_values == 1)
+            {
+                plus_atk -= artifact_atk;
+                artifact_atk = 0;
+            }
+            else if (left_artifact_dropdown_values == 2)
+            {
+                plus_def -= artifact_def;
+                artifact_def = 0;
+            }
+            else if (left_artifact_dropdown_values == 3)
+            {
+                plus_hp -= artifact_hp;
+                artifact_hp = 0;
+            }
+
+            // reset artifact stat
+            left_artifact_dropdown_values = 0;
+
+            // add artifact stat to plus stat
+            if (value == 1)
+            {
+                plus_atk += 100;
+                artifact_atk = 100;
+                left_artifact_dropdown_values = 1;
+            }
+            else if (value == 2)
+            {
+                plus_def += 100;
+                artifact_def = 100;
+                left_artifact_dropdown_values = 2;
+            }
+            else if (value == 3)
+            {
+                plus_hp += 100;
+                artifact_hp = 100;
+                left_artifact_dropdown_values = 3;
+            }
+        }
+        // check artifact type
+        else if (dir == "right")
+        {
+            // clear cur artifact stat and reset plus stat
+            if (right_artifact_dropdown_values == 1)
+            {
+                plus_atk -= artifact_atk;
+                artifact_atk = 0;
+            }
+            else if (right_artifact_dropdown_values == 2)
+            {
+                plus_def -= artifact_def;
+                artifact_def = 0;
+            }
+            else if (right_artifact_dropdown_values == 3)
+            {
+                plus_hp -= artifact_hp;
+                artifact_hp = 0;
+            }
+
+            // reset artifact stat
+            right_artifact_dropdown_values = 0;
+
+            // add artifact stat to plus stat
+            if (value == 1)
+            {
+                plus_atk += 100;
+                artifact_atk = 100;
+                right_artifact_dropdown_values = 1;
+            }
+            else if (value == 2)
+            {
+                plus_def += 100;
+                artifact_def = 100;
+                right_artifact_dropdown_values = 2;
+            }
+            else if (value == 3)
+            {
+                plus_hp += 100;
+                artifact_hp = 100;
+                right_artifact_dropdown_values = 3;
+            }
+        }
+
+        monster_plus_stats_divide[1].text = plus_atk.ToString();
+        monster_plus_stats_divide[2].text = plus_def.ToString();
+        monster_plus_stats_divide[0].text = plus_hp.ToString();
     }
 }

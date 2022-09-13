@@ -29,7 +29,7 @@ public class rune_stat_dropdown_control : MonoBehaviour
         //message.text = op;
         gameObject.SendMessageUpwards("Set_Stat_Value", dropdown.value);
         gameObject.SendMessageUpwards("Set_Stat_String", op_title[dropdown.value]);
-        Debug.Log("Dropdown Change!\n" + op);
+        // Debug.Log("Dropdown Change!\n" + op);
     }
     void Set_Options(int rune_number)
     {

@@ -53,11 +53,11 @@ public class rune_set_dropdown_control : MonoBehaviour
         parameters[2] = op_value;
 
         gameObject.SendMessageUpwards("Rune_Set_Change", parameters);
-        Debug.Log("Dropdown Change!\n" + op);
+        // Debug.Log("Dropdown Change!\n" + op);
     }
     private void ResetFunction_UI(int dropdown_value)
     {
-        Debug.Log("Clear");
+        // Debug.Log("Clear");
         //button.onClick.RemoveAllListeners();
         dropdown.onValueChanged.RemoveAllListeners();
         dropdown.options.Clear();
