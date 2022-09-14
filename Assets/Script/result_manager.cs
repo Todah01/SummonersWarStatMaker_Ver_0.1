@@ -189,10 +189,10 @@ public class result_manager : MonoBehaviour
         if (stat_scoreboard.ContainsKey(prefer_stat_type[2])) stat_scoreboard[prefer_stat_type[2]] += 1;
 
         // sort stat_scoreboard by value
-        stat_scoreboard.OrderByDescending(item => item.Key).ToDictionary(x => x.Key, x => x.Value);
+        // stat_scoreboard.OrderByDescending(item => item.Key).ToDictionary(x => x.Key, x => x.Value);
         #endregion
 
-        #region mim_stat_demand
+        #region min_stat_demand
         List<int> min_demand_crirate = new List<int>() { 100, 85, 70 };
         List<int> min_demand_acc = new List<int>() { 85, 70, 55 };
         List<int> min_demand_res = new List<int>() { 100, 100, 100 };
@@ -574,17 +574,17 @@ public class result_manager : MonoBehaviour
             if (left_artifact_dropdown_values == 1)
             {
                 plus_atk -= artifact_atk;
-                artifact_atk = 0;
+                artifact_atk -= 100;
             }
             else if (left_artifact_dropdown_values == 2)
             {
                 plus_def -= artifact_def;
-                artifact_def = 0;
+                artifact_def -= 100;
             }
             else if (left_artifact_dropdown_values == 3)
             {
                 plus_hp -= artifact_hp;
-                artifact_hp = 0;
+                artifact_hp -= 1500;
             }
 
             // reset artifact stat
@@ -594,19 +594,19 @@ public class result_manager : MonoBehaviour
             if (value == 1)
             {
                 plus_atk += 100;
-                artifact_atk = 100;
+                artifact_atk += 100;
                 left_artifact_dropdown_values = 1;
             }
             else if (value == 2)
             {
                 plus_def += 100;
-                artifact_def = 100;
+                artifact_def += 100;
                 left_artifact_dropdown_values = 2;
             }
             else if (value == 3)
             {
-                plus_hp += 100;
-                artifact_hp = 100;
+                plus_hp += 1500;
+                artifact_hp += 1500;
                 left_artifact_dropdown_values = 3;
             }
         }
@@ -617,17 +617,17 @@ public class result_manager : MonoBehaviour
             if (right_artifact_dropdown_values == 1)
             {
                 plus_atk -= artifact_atk;
-                artifact_atk = 0;
+                artifact_atk -= 100;
             }
             else if (right_artifact_dropdown_values == 2)
             {
                 plus_def -= artifact_def;
-                artifact_def = 0;
+                artifact_def -= 100;
             }
             else if (right_artifact_dropdown_values == 3)
             {
                 plus_hp -= artifact_hp;
-                artifact_hp = 0;
+                artifact_hp -= 1500;
             }
 
             // reset artifact stat
@@ -637,19 +637,19 @@ public class result_manager : MonoBehaviour
             if (value == 1)
             {
                 plus_atk += 100;
-                artifact_atk = 100;
+                artifact_atk += 100;
                 right_artifact_dropdown_values = 1;
             }
             else if (value == 2)
             {
                 plus_def += 100;
-                artifact_def = 100;
+                artifact_def += 100;
                 right_artifact_dropdown_values = 2;
             }
             else if (value == 3)
             {
-                plus_hp += 100;
-                artifact_hp = 100;
+                plus_hp += 1500;
+                artifact_hp += 1500;
                 right_artifact_dropdown_values = 3;
             }
         }
