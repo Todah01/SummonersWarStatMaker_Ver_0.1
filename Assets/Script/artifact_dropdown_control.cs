@@ -16,7 +16,8 @@ public class artifact_dropdown_control : MonoBehaviour
     }
     private void Update()
     {
-        dropdown.onValueChanged.AddListener(delegate {
+        dropdown.onValueChanged.AddListener(delegate
+        {
             Function_Dropdown(dropdown);
         });
     }
