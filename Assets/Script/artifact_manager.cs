@@ -14,7 +14,7 @@ public class artifact_manager : MonoBehaviour
 
     int left_artifact_value, right_artifact_value;
     // set sprite artifact
-    void SetSpriteArtifact()
+    public void SetSpriteArtifact()
     {
         left_artifact_value = resultmanager.GetComponent<result_manager>().left_artifact_dropdown_values;
         right_artifact_value = resultmanager.GetComponent<result_manager>().right_artifact_dropdown_values;
