@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 22825691}
   - component: {fileID: 22825690}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,7 +285,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -35}
+  m_AnchoredPosition: {x: 0, y: -31}
   m_SizeDelta: {x: 80, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &22825690
@@ -753,6 +753,7 @@ GameObject:
   - component: {fileID: 65630125}
   - component: {fileID: 65630127}
   - component: {fileID: 65630126}
+  - component: {fileID: 65630128}
   m_Layer: 5
   m_Name: third_stat_title
   m_TagString: Untagged
@@ -821,6 +822,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65630124}
   m_CullTransparentMesh: 0
+--- !u!114 &65630128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65630124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5af86dbd91dbc4438bfc889ad7ff0ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sub_text: {fileID: 401712083}
 --- !u!1 &69193742
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,7 +920,6 @@ GameObject:
   - component: {fileID: 75292498}
   - component: {fileID: 75292500}
   - component: {fileID: 75292499}
-  - component: {fileID: 75292501}
   m_Layer: 5
   m_Name: rune_box (6)
   m_TagString: Untagged
@@ -974,23 +987,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75292497}
   m_CullTransparentMesh: 0
---- !u!114 &75292501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 75292497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb744987cf1a4be48920bfc147d60f6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pre_stat: 
-  first_stat: 
-  second_stat: 
-  third_stat: 
-  fourth_stat: 
 --- !u!1 &83091685
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,7 +2040,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &156412387
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2183,6 +2179,7 @@ GameObject:
   - component: {fileID: 172317764}
   - component: {fileID: 172317766}
   - component: {fileID: 172317765}
+  - component: {fileID: 172317767}
   m_Layer: 5
   m_Name: first_stat_title
   m_TagString: Untagged
@@ -2251,6 +2248,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172317763}
   m_CullTransparentMesh: 0
+--- !u!114 &172317767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172317763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5af86dbd91dbc4438bfc889ad7ff0ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sub_text: {fileID: 2057613883}
 --- !u!1 &178501518
 GameObject:
   m_ObjectHideFlags: 0
@@ -5066,7 +5076,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 60, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &401712085
@@ -5418,6 +5428,50 @@ MonoBehaviour:
         - m_Target: {fileID: 1365273599}
           m_MethodName: OnRuneClick
           m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 172317767}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1239677498}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 65630128}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 701157045}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8214,7 +8268,6 @@ GameObject:
   - component: {fileID: 683136357}
   - component: {fileID: 683136359}
   - component: {fileID: 683136358}
-  - component: {fileID: 683136360}
   m_Layer: 5
   m_Name: rune_box (3)
   m_TagString: Untagged
@@ -8282,23 +8335,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683136356}
   m_CullTransparentMesh: 0
---- !u!114 &683136360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 683136356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb744987cf1a4be48920bfc147d60f6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pre_stat: 
-  first_stat: 
-  second_stat: 
-  third_stat: 
-  fourth_stat: 
 --- !u!1 &686161801
 GameObject:
   m_ObjectHideFlags: 0
@@ -8609,6 +8645,7 @@ GameObject:
   - component: {fileID: 701157042}
   - component: {fileID: 701157044}
   - component: {fileID: 701157043}
+  - component: {fileID: 701157045}
   m_Layer: 5
   m_Name: fourth_stat_title
   m_TagString: Untagged
@@ -8677,6 +8714,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 701157041}
   m_CullTransparentMesh: 0
+--- !u!114 &701157045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701157041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5af86dbd91dbc4438bfc889ad7ff0ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sub_text: {fileID: 1390046647}
 --- !u!1 &708622199
 GameObject:
   m_ObjectHideFlags: 0
@@ -9083,6 +9133,50 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 4
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 172317767}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1239677498}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 65630128}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 701157045}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -10609,7 +10703,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 59.999996, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &837347770
@@ -11469,7 +11563,6 @@ GameObject:
   - component: {fileID: 898341700}
   - component: {fileID: 898341702}
   - component: {fileID: 898341701}
-  - component: {fileID: 898341703}
   m_Layer: 5
   m_Name: rune_box (5)
   m_TagString: Untagged
@@ -11537,23 +11630,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898341699}
   m_CullTransparentMesh: 0
---- !u!114 &898341703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898341699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb744987cf1a4be48920bfc147d60f6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pre_stat: 
-  first_stat: 
-  second_stat: 
-  third_stat: 
-  fourth_stat: 
 --- !u!1 &912377778
 GameObject:
   m_ObjectHideFlags: 0
@@ -12462,6 +12538,50 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 172317767}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1239677498}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 65630128}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 701157045}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &966649745
 GameObject:
   m_ObjectHideFlags: 0
@@ -12561,6 +12681,50 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 3
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 172317767}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1239677498}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 65630128}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 701157045}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -13498,7 +13662,6 @@ GameObject:
   - component: {fileID: 1059981027}
   - component: {fileID: 1059981029}
   - component: {fileID: 1059981028}
-  - component: {fileID: 1059981030}
   m_Layer: 5
   m_Name: rune_box (1)
   m_TagString: Untagged
@@ -13566,23 +13729,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059981026}
   m_CullTransparentMesh: 0
---- !u!114 &1059981030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059981026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb744987cf1a4be48920bfc147d60f6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pre_stat: 
-  first_stat: 
-  second_stat: 
-  third_stat: 
-  fourth_stat: 
 --- !u!1 &1072301588
 GameObject:
   m_ObjectHideFlags: 0
@@ -15248,6 +15394,7 @@ GameObject:
   - component: {fileID: 1239677495}
   - component: {fileID: 1239677497}
   - component: {fileID: 1239677496}
+  - component: {fileID: 1239677498}
   m_Layer: 5
   m_Name: second_stat_title
   m_TagString: Untagged
@@ -15316,6 +15463,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239677494}
   m_CullTransparentMesh: 0
+--- !u!114 &1239677498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239677494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5af86dbd91dbc4438bfc889ad7ff0ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sub_text: {fileID: 837347768}
 --- !u!1 &1244716164
 GameObject:
   m_ObjectHideFlags: 0
@@ -17163,6 +17323,7 @@ MonoBehaviour:
   monster_profile: {fileID: 849896954}
   monster_name: {fileID: 253230201}
   rune_stat_name: {fileID: 1832798610}
+  pre_option_stat: {fileID: 1480819264}
   first_rune_stat_name: {fileID: 172317765}
   first_rune_stat_amount: {fileID: 2057613885}
   second_rune_stat_name: {fileID: 1239677496}
@@ -17448,7 +17609,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 140, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1390046649
@@ -17881,7 +18042,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1416320069
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17914,7 +18075,6 @@ GameObject:
   - component: {fileID: 1441231755}
   - component: {fileID: 1441231757}
   - component: {fileID: 1441231756}
-  - component: {fileID: 1441231758}
   m_Layer: 5
   m_Name: rune_box (4)
   m_TagString: Untagged
@@ -17982,23 +18142,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441231754}
   m_CullTransparentMesh: 0
---- !u!114 &1441231758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441231754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb744987cf1a4be48920bfc147d60f6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pre_stat: 
-  first_stat: 
-  second_stat: 
-  third_stat: 
-  fourth_stat: 
 --- !u!1 &1441885579
 GameObject:
   m_ObjectHideFlags: 0
@@ -19642,6 +19785,50 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 172317767}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1239677498}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 65630128}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 701157045}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1538098680
 GameObject:
   m_ObjectHideFlags: 0
@@ -20395,7 +20582,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -35}
+  m_AnchoredPosition: {x: 0, y: -31}
   m_SizeDelta: {x: 80, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1602678083
@@ -24142,6 +24329,50 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 172317767}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1239677498}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 65630128}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 701157045}
+          m_MethodName: RuneInfoGraphicSetting
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1877792313
 GameObject:
   m_ObjectHideFlags: 0
@@ -25492,7 +25723,6 @@ GameObject:
   - component: {fileID: 1985284314}
   - component: {fileID: 1985284316}
   - component: {fileID: 1985284315}
-  - component: {fileID: 1985284317}
   m_Layer: 5
   m_Name: rune_box (2)
   m_TagString: Untagged
@@ -25560,23 +25790,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985284313}
   m_CullTransparentMesh: 0
---- !u!114 &1985284317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1985284313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb744987cf1a4be48920bfc147d60f6c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pre_stat: 
-  first_stat: 
-  second_stat: 
-  third_stat: 
-  fourth_stat: 
 --- !u!1 &1987789579
 GameObject:
   m_ObjectHideFlags: 0
@@ -27119,7 +27332,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 59.999996, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2057613885

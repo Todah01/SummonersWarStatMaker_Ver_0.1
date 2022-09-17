@@ -16,6 +16,7 @@ public class result_manager : MonoBehaviour
     public Image monster_profile;
     public Text monster_name;
     public Text rune_stat_name;
+    public Text pre_option_stat;
     public Text first_rune_stat_name;
     public Text first_rune_stat_amount;
     public Text second_rune_stat_name;
@@ -632,30 +633,45 @@ public class result_manager : MonoBehaviour
     }
     void SettingRuneStat(int rune_number)
     {
-        int order_number = 0;
+        int order_number = 1;
+        bool ispreoption = false;
+        if (rune_stat_infos[rune_number].Count == 5)
+            ispreoption = true;
 
         foreach (var dict in rune_stat_infos[rune_number])
         {
+            string percentage = "";
 
-            if(order_number == 0)
+            if(ispreoption)
+            {
+                pre_option_stat.text = dict.Key + " + " + dict.Value.ToString() + "%";
+                ispreoption = false;
+                continue;
+            }
+
+            if(order_number == 1)
             {
                 first_rune_stat_name.text = dict.Key;
-                first_rune_stat_amount.text = dict.Value.ToString();
-            }
-            else if(order_number == 1)
-            {
-                second_rune_stat_name.text = dict.Key;
-                second_rune_stat_amount.text = dict.Value.ToString();
+                if (dict.Key != "SPD") percentage += "%";
+                first_rune_stat_amount.text = " + " + dict.Value.ToString() + percentage;
             }
             else if(order_number == 2)
             {
-                third_rune_stat_name.text = dict.Key;
-                third_rune_stat_amount.text = dict.Value.ToString();
+                second_rune_stat_name.text = dict.Key;
+                if (dict.Key != "SPD") percentage += "%";
+                second_rune_stat_amount.text = " + " + dict.Value.ToString() + percentage;
             }
             else if(order_number == 3)
             {
+                third_rune_stat_name.text = dict.Key;
+                if (dict.Key != "SPD") percentage += "%";
+                third_rune_stat_amount.text = " + " + dict.Value.ToString() + percentage;
+            }
+            else if(order_number == 4)
+            {
                 fourth_rune_stat_name.text = dict.Key;
-                fourth_rune_stat_amount.text = dict.Value.ToString();
+                if (dict.Key != "SPD") percentage += "%";
+                fourth_rune_stat_amount.text = " + " + dict.Value.ToString() + percentage;
             }
 
             order_number++;
