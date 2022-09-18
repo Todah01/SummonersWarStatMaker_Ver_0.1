@@ -17,13 +17,13 @@ public class rune_info_text_control : MonoBehaviour
             stat_name.text == "DEF" || stat_name.text == "HP")
         {
             ColorUtility.TryParseHtmlString("#FDAC51", out color);
-            stat_amount.transform.localPosition = new Vector3(60f, 0f, this.transform.localPosition.z);
+            stat_amount.transform.localPosition = new Vector3(52f, 0f, this.transform.localPosition.z);
             stat_amount.color = color;
         }
         else
         {
             ColorUtility.TryParseHtmlString("#FFFFFF", out color);
-            stat_amount.transform.localPosition = new Vector3(145f, 0f, this.transform.localPosition.z);
+            stat_amount.transform.localPosition = new Vector3(130f, 0f, this.transform.localPosition.z);
             stat_amount.color = color;
         }
     }

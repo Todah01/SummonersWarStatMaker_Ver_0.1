@@ -635,41 +635,66 @@ public class result_manager : MonoBehaviour
     {
         int order_number = 1;
         bool ispreoption = false;
+        pre_option_stat.gameObject.SetActive(false);
+
         if (rune_stat_infos[rune_number].Count == 5)
+        {
             ispreoption = true;
+            pre_option_stat.gameObject.SetActive(true);
+        }
 
         foreach (var dict in rune_stat_infos[rune_number])
         {
             string percentage = "";
 
-            if(ispreoption)
+            if (ispreoption)
             {
-                pre_option_stat.text = dict.Key + " + " + dict.Value.ToString() + "%";
+                string description_key = dict.Key;
+                if (dict.Key == "ACC") description_key = "Accuracy";
+                else if (dict.Key == "RES") description_key = "Resistance";
+
+                pre_option_stat.text = description_key + " + " + dict.Value.ToString() + "%";
                 ispreoption = false;
                 continue;
             }
 
-            if(order_number == 1)
+            if (order_number == 1)
             {
-                first_rune_stat_name.text = dict.Key;
+                string description_key = dict.Key;
+                if (dict.Key == "ACC") description_key = "Accuracy";
+                else if (dict.Key == "RES") description_key = "Resistance";
+
+                first_rune_stat_name.text = description_key;
                 if (dict.Key != "SPD") percentage += "%";
                 first_rune_stat_amount.text = " + " + dict.Value.ToString() + percentage;
             }
             else if(order_number == 2)
             {
-                second_rune_stat_name.text = dict.Key;
+                string description_key = dict.Key;
+                if (dict.Key == "ACC") description_key = "Accuracy";
+                else if (dict.Key == "RES") description_key = "Resistance";
+
+                second_rune_stat_name.text = description_key;
                 if (dict.Key != "SPD") percentage += "%";
                 second_rune_stat_amount.text = " + " + dict.Value.ToString() + percentage;
             }
             else if(order_number == 3)
             {
-                third_rune_stat_name.text = dict.Key;
+                string description_key = dict.Key;
+                if (dict.Key == "ACC") description_key = "Accuracy";
+                else if (dict.Key == "RES") description_key = "Resistance";
+
+                third_rune_stat_name.text = description_key;
                 if (dict.Key != "SPD") percentage += "%";
                 third_rune_stat_amount.text = " + " + dict.Value.ToString() + percentage;
             }
             else if(order_number == 4)
             {
-                fourth_rune_stat_name.text = dict.Key;
+                string description_key = dict.Key;
+                if (dict.Key == "ACC") description_key = "Accuracy";
+                else if (dict.Key == "RES") description_key = "Resistance";
+
+                fourth_rune_stat_name.text = description_key;
                 if (dict.Key != "SPD") percentage += "%";
                 fourth_rune_stat_amount.text = " + " + dict.Value.ToString() + percentage;
             }
