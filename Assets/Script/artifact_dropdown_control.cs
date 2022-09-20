@@ -48,4 +48,21 @@ public class artifact_dropdown_control : MonoBehaviour
 
         resultmanager.GetComponent<result_manager>().AddArtifactStat(artifacttype, value);
     }
+    public void ResetDropdown()
+    {
+        dropdown.onValueChanged.RemoveAllListeners();
+        dropdown.options.Clear();
+
+        for (int i = 0; i < op_title.Length; i++)
+        {
+            Dropdown.OptionData newData = new Dropdown.OptionData();
+            newData.text = op_title[i];
+            dropdown.options.Add(newData);
+        }
+        dropdown.SetValueWithoutNotify(-1);
+        dropdown.SetValueWithoutNotify(0);
+
+        dropdown.value = 0;
+        dropdown.itemText.text = op_title[dropdown.value];
+    }
 }

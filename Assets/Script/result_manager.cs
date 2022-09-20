@@ -226,6 +226,7 @@ public class result_manager : MonoBehaviour
         int min_acc = 0;
         int min_res = 0;
         int rune_stat_cnt = 4;
+        bool pre_option_possible = false;
         bool pre_option_on = false;
         bool prefer_crirate = false;
         bool prefer_acc = false;
@@ -246,8 +247,9 @@ public class result_manager : MonoBehaviour
                     break;
                 case "ACC":
                     if (i == 0) min_acc = 85;
-                    else if (i == 1) min_acc = 70;
-                    else if (i == 2 || i == 3) min_acc = 55;
+                    else if (i == 1) min_acc = 75;
+                    else if (i == 2) min_acc = 65;
+                    else if (i == 3) min_acc = 55;
                     prefer_acc = true;
                     break;
                 case "RES":
@@ -260,25 +262,34 @@ public class result_manager : MonoBehaviour
         // temp dict for save rune info
         Dictionary<string, int> temp_rune_info = new Dictionary<string, int>();
 
+        int pre_option_percentage = Random.Range(1, 101);
+        if (pre_option_percentage > 20) pre_option_possible = true;
+
         // set pre-option
-        if (number != 2 && prefer_acc)
+        if (number != 2 && prefer_acc && pre_option_possible)
         {
             if (!temp_rune_info.ContainsKey("ACC"))
             {
-                pre_option_on = true;
-                rune_stat_cnt += 1;
-                int pre_option_value = CalRainforceValue(stat_rainforce_value["ACC"]);
-                temp_rune_info.Add("ACC", pre_option_value);
+                if(cur_acc + plus_acc < min_acc)
+                {
+                    pre_option_on = true;
+                    rune_stat_cnt += 1;
+                    int pre_option_value = CalRainforceValue(stat_rainforce_value["ACC"]);
+                    temp_rune_info.Add("ACC", pre_option_value);
+                }
             }
         }
-        else if (number != 2 && prefer_res)
+        else if (number != 2 && prefer_res && pre_option_possible)
         {
             if (!temp_rune_info.ContainsKey("RES"))
             {
-                pre_option_on = true;
-                rune_stat_cnt += 1;
-                int pre_option_value = CalRainforceValue(stat_rainforce_value["RES"]);
-                temp_rune_info.Add("RES", pre_option_value);
+                if (cur_res + plus_res < min_res)
+                {
+                    pre_option_on = true;
+                    rune_stat_cnt += 1;
+                    int pre_option_value = CalRainforceValue(stat_rainforce_value["RES"]);
+                    temp_rune_info.Add("RES", pre_option_value);
+                }  
             }
         }
 
@@ -337,13 +348,6 @@ public class result_manager : MonoBehaviour
                     rainforce_cnt += 1;
                 }
             }
-
-            //for (int i = 0; i < 4; i++)
-            //{
-            //    string rainforce_stat = CalRainforceStatNumber(temp_rune_info, pre_option_on);
-            //    int rainforce_value = CalRainforceValue(stat_rainforce_value[rainforce_stat]);
-            //    temp_rune_info[rainforce_stat] += rainforce_value;
-            //}
         }
         // if rune number is even number, check even number main stat before add stat to rune.
         else
@@ -806,8 +810,9 @@ public class result_manager : MonoBehaviour
         etc_window.SetActive(control);
     }
     // reset plus stat and artifact stat
-    public void ResetPlusStat()
+    public void ResetStat()
     {
+        rune_stat_infos.Clear();
         plus_spd = 0;
         plus_atk = 0;
         plus_hp = 0;
@@ -822,7 +827,7 @@ public class result_manager : MonoBehaviour
     // Recalculate Stat
     public void OnClickReCalculateBtn()
     {
-        ResetPlusStat();
+        ResetStat();
         // Restart Stat Calculate
         Start_StatSetting();
         // Close Etc Window
@@ -830,7 +835,7 @@ public class result_manager : MonoBehaviour
     }
     IEnumerator ReCalculateStart()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         EtcWindowControl(false);
     }
 }
