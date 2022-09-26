@@ -219,9 +219,6 @@ public class result_manager : MonoBehaviour
         #endregion
 
         #region min_stat_demand
-        List<int> min_demand_crirate = new List<int>() { 100, 85, 70 };
-        List<int> min_demand_acc = new List<int>() { 85, 70, 55 };
-        List<int> min_demand_res = new List<int>() { 100, 100, 100 };
         int min_crirate = 0;
         int min_acc = 0;
         int min_res = 0;
@@ -322,6 +319,9 @@ public class result_manager : MonoBehaviour
 
                 if (!temp_rune_info.ContainsKey(key))
                 {
+                    if (temp_rune_info.Count == rune_stat_cnt)
+                        break;
+
                     int rainforce_value = CalRainforceValue(stat_rainforce_value[key]);
                     temp_rune_info.Add(key, rainforce_value);
                 }
@@ -337,13 +337,32 @@ public class result_manager : MonoBehaviour
             while (rainforce_cnt < 4)
             {
                 string rainforce_stat = CalRainforceStatNumber(temp_rune_info, pre_option_on);
-                if (prefer_crirate && rainforce_stat == "CRI RATE" && cur_crirate + plus_crirate >= min_crirate ||
-                    prefer_acc && rainforce_stat == "ACC" && cur_acc + plus_acc >= min_acc ||
-                    prefer_res && rainforce_stat == "RES" && cur_res + plus_res >= min_res)
+                int rainforce_value = CalRainforceValue(stat_rainforce_value[rainforce_stat]);
+
+                if(prefer_crirate && rainforce_stat == "CRI RATE" && cur_crirate + plus_crirate + temp_rune_info[rainforce_stat] < min_crirate
+                    && cur_crirate + plus_crirate + temp_rune_info[rainforce_stat] + rainforce_value >= min_crirate)
+                {
+                    temp_rune_info[rainforce_stat] += rainforce_value;
+                    rainforce_cnt += 1;
+                }
+                else if (prefer_acc && rainforce_stat == "ACC" && cur_acc + plus_acc + temp_rune_info[rainforce_stat] < min_acc
+                    && cur_acc + plus_acc + temp_rune_info[rainforce_stat] + rainforce_value >= min_acc)
+                {
+                    temp_rune_info[rainforce_stat] += rainforce_value;
+                    rainforce_cnt += 1;
+                }
+                else if (prefer_res && rainforce_stat == "RES" && cur_res + plus_res + temp_rune_info[rainforce_stat] < min_res
+                    && cur_res + plus_res + temp_rune_info[rainforce_stat] + rainforce_value >= min_res)
+                {
+                    temp_rune_info[rainforce_stat] += rainforce_value;
+                    rainforce_cnt += 1;
+                }
+                else if (prefer_crirate && rainforce_stat == "CRI RATE" && cur_crirate + plus_crirate + temp_rune_info[rainforce_stat] >= min_crirate ||
+                    prefer_acc && rainforce_stat == "ACC" && cur_acc + plus_acc + temp_rune_info[rainforce_stat] >= min_acc ||
+                    prefer_res && rainforce_stat == "RES" && cur_res + plus_res + temp_rune_info[rainforce_stat] >= min_res)
                     continue;
                 else
                 {
-                    int rainforce_value = CalRainforceValue(stat_rainforce_value[rainforce_stat]);
                     temp_rune_info[rainforce_stat] += rainforce_value;
                     rainforce_cnt += 1;
                 }
@@ -388,6 +407,9 @@ public class result_manager : MonoBehaviour
 
                 if (!temp_rune_info.ContainsKey(key) && key != even_stat_type)
                 {
+                    if (temp_rune_info.Count == rune_stat_cnt)
+                        break;
+
                     int rainforce_value = CalRainforceValue(stat_rainforce_value[key]);
                     temp_rune_info.Add(key, rainforce_value);
                 }
@@ -423,13 +445,32 @@ public class result_manager : MonoBehaviour
                 }
                 else rainforce_stat = CalRainforceStatNumber(temp_rune_info, pre_option_on);
 
-                if (prefer_crirate && rainforce_stat == "CRI RATE" && cur_crirate + plus_crirate >= min_crirate ||
-                    prefer_acc && rainforce_stat == "ACC" && cur_acc + plus_acc >= min_acc ||
-                    prefer_res && rainforce_stat == "RES" && cur_res + plus_res >= min_res)
+                int rainforce_value = CalRainforceValue(stat_rainforce_value[rainforce_stat]);
+
+                if (prefer_crirate && rainforce_stat == "CRI RATE" && cur_crirate + plus_crirate + temp_rune_info[rainforce_stat] < min_crirate
+                    && cur_crirate + plus_crirate + temp_rune_info[rainforce_stat] + rainforce_value >= min_crirate)
+                {
+                    temp_rune_info[rainforce_stat] += rainforce_value;
+                    rainforce_cnt += 1;
+                }
+                else if (prefer_acc && rainforce_stat == "ACC" && cur_acc + plus_acc + temp_rune_info[rainforce_stat] < min_acc
+                    && cur_acc + plus_acc + temp_rune_info[rainforce_stat] + rainforce_value >= min_acc)
+                {
+                    temp_rune_info[rainforce_stat] += rainforce_value;
+                    rainforce_cnt += 1;
+                }
+                else if (prefer_res && rainforce_stat == "RES" && cur_res + plus_res + temp_rune_info[rainforce_stat] < min_res
+                    && cur_res + plus_res + temp_rune_info[rainforce_stat] + rainforce_value >= min_res)
+                {
+                    temp_rune_info[rainforce_stat] += rainforce_value;
+                    rainforce_cnt += 1;
+                }
+                else if (prefer_crirate && rainforce_stat == "CRI RATE" && cur_crirate + plus_crirate + temp_rune_info[rainforce_stat] >= min_crirate ||
+                    prefer_acc && rainforce_stat == "ACC" && cur_acc + plus_acc + temp_rune_info[rainforce_stat] >= min_acc ||
+                    prefer_res && rainforce_stat == "RES" && cur_res + plus_res + temp_rune_info[rainforce_stat] >= min_res)
                     continue;
                 else
                 {
-                    int rainforce_value = CalRainforceValue(stat_rainforce_value[rainforce_stat]);
                     temp_rune_info[rainforce_stat] += rainforce_value;
                     rainforce_cnt += 1;
                 }
@@ -470,11 +511,11 @@ public class result_manager : MonoBehaviour
             else if (dict.Key == "ACC") plus_acc += dict.Value;
         }
 
-        Debug.Log("rune " + number);
-        foreach (var dict in temp_rune_info)
-        {
-            Debug.Log(dict.Key + " : " + dict.Value);
-        }
+        //Debug.Log("rune " + number);
+        //foreach (var dict in temp_rune_info)
+        //{
+        //    Debug.Log(dict.Key + " : " + dict.Value);
+        //}
 
         // add stat to rune_stat_infos
         rune_stat_infos.Add(temp_rune_info);
