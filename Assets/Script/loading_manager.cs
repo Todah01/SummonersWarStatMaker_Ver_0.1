@@ -19,9 +19,9 @@ public class loading_manager : MonoBehaviour
     public void OnClickIrene()
     {
         Debug.Log("Click Irene");
-        //if (isStart) return;
+        if (isStart) return;
 
-        //isStart = true;
+        isStart = true;
         irene_anim_controllor.SetTrigger("IsMotion");
     }
 }
