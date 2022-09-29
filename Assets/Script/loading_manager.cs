@@ -18,7 +18,6 @@ public class loading_manager : MonoBehaviour
 
     public void OnClickIrene()
     {
-        Debug.Log("Click Irene");
         if (isStart) return;
 
         isStart = true;

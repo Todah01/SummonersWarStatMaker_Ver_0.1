@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class result_manager : MonoBehaviour
 {
     #region Public Variable
+    public GameObject etc_window_control;
     public GameObject selected_data;
     public GameObject rune_info;
-    public GameObject etc_window;
     public GameObject[] rune_info_datas;
     public Image rune_img_slot;
     public Image rune_img_pattern;
@@ -845,11 +845,6 @@ public class result_manager : MonoBehaviour
         monster_plus_stats_divide[2].text = plus_def.ToString();
         monster_plus_stats_divide[0].text = plus_hp.ToString();
     }
-    // Open Setting Window
-    public void EtcWindowControl(bool control)
-    {
-        etc_window.SetActive(control);
-    }
     // reset plus stat and artifact stat
     public void ResetStat()
     {
@@ -872,11 +867,6 @@ public class result_manager : MonoBehaviour
         // Restart Stat Calculate
         Start_StatSetting();
         // Close Etc Window
-        StartCoroutine(ReCalculateStart());
-    }
-    IEnumerator ReCalculateStart()
-    {
-        yield return new WaitForSeconds(1f);
-        EtcWindowControl(false);
+        etc_window_control.GetComponent<etc_window_control>().RecalculateEtc();
     }
 }
