@@ -8,6 +8,7 @@ public class etc_window_control : MonoBehaviour
     public GameObject etc_angel;
     public GameObject etc_start;
     public GameObject select_data;
+    public GameObject loading_canvas;
 
     Animator warrior_anim;
     Animator angelmon_anim;
@@ -36,6 +37,7 @@ public class etc_window_control : MonoBehaviour
     }
     public void RecalculateEtc()
     {
+        loading_canvas.SetActive(true);
         StartCoroutine(ReCalculateStart());
     }
     IEnumerator CalculateStart()
@@ -45,12 +47,18 @@ public class etc_window_control : MonoBehaviour
     }
     IEnumerator ReCalculateStart()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(LoadingDelay());
         EtcWindowControl(false);
     }
     IEnumerator EtcWindowOpen()
     {
         yield return new WaitForSeconds(0.5f);
         EtcWindowControl(true);
+    }
+    IEnumerator LoadingDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
+        loading_canvas.SetActive(false);
     }
 }
