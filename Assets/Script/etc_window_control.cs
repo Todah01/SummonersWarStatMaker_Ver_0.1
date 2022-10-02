@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class etc_window_control : MonoBehaviour
 {
     public GameObject etc_window;
     public GameObject etc_angel;
     public GameObject etc_start;
+    public GameObject etc_bg;
+    public GameObject etc_notice;
     public GameObject select_data;
     public GameObject loading_canvas;
 
@@ -38,7 +41,23 @@ public class etc_window_control : MonoBehaviour
     public void RecalculateEtc()
     {
         loading_canvas.SetActive(true);
+        EtcWindowControl(false);
         StartCoroutine(ReCalculateStart());
+    }
+    public void OnClickResetBtn()
+    {
+        etc_bg.SetActive(false);
+        etc_notice.SetActive(true);
+    }
+    public void OnClickYes()
+    {
+        SceneManager.LoadScene("Loading");
+    }
+    public void OnClickNo()
+    {
+        EtcWindowControl(false);
+        etc_bg.SetActive(true);
+        etc_notice.SetActive(false);
     }
     IEnumerator CalculateStart()
     {
@@ -49,7 +68,6 @@ public class etc_window_control : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         StartCoroutine(LoadingDelay());
-        EtcWindowControl(false);
     }
     IEnumerator EtcWindowOpen()
     {
