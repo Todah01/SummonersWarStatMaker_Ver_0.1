@@ -6,10 +6,8 @@ using UnityEngine.UI;
 public class select_manager : MonoBehaviour
 {
     #region Public Variable
-    public GameObject loading_canvas;
     public GameObject rune_set_ui;
     public GameObject etc_BG;
-    public GameObject result_ui;
     public GameObject[] rune_slots;
     public Image[] rune_img;
     public Text rune_number;
@@ -138,16 +136,5 @@ public class select_manager : MonoBehaviour
         cur_rune_number = 0;
         rune_set_ui.SetActive(false);
         etc_BG.SetActive(false);
-    }
-    public void ResultWindowOpen()
-    {
-        loading_canvas.SetActive(true);
-        StartCoroutine(OpenResultWindow());
-    }
-    IEnumerator OpenResultWindow()
-    {
-        yield return new WaitForSeconds(2f);
-        loading_canvas.SetActive(false);
-        result_ui.SetActive(true);
     }
 }
