@@ -29,6 +29,7 @@ public class result_manager : MonoBehaviour
     public Text[] monster_plus_stats_divide;
     public Text[] monster_stats_combine;
     public int left_artifact_dropdown_values = 0, right_artifact_dropdown_values = 0;
+    public int cur_hp, cur_atk, cur_def, cur_spd, cur_crirate, cur_cridmg, cur_res, cur_acc;
     #endregion
 
     #region Local Variable
@@ -41,7 +42,6 @@ public class result_manager : MonoBehaviour
     List<string> rune_type;
     List<string> even_rune_stat_type;
     List<string> prefer_stat_type;
-    int cur_hp, cur_atk, cur_def, cur_spd, cur_crirate, cur_cridmg, cur_res, cur_acc;
     int plus_hp, plus_atk, plus_def, plus_spd, plus_crirate, plus_cridmg, plus_res, plus_acc;
     #endregion
     private void Start()

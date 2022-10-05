@@ -8,9 +8,11 @@ using UnityEngine.SceneManagement;
 public class loading_manager : MonoBehaviour
 {
     public GameObject irene_animation;
+    public GameObject profile_animation;
 
     Animator irene_anim_controllor;
     bool isStart = false;
+    bool isApply = false;
 
     private void Awake()
     {
@@ -18,15 +20,25 @@ public class loading_manager : MonoBehaviour
     }
     public void OnClickIrene()
     {
+        if (!isApply) return;
+
         if (isStart) return;
 
         isStart = true;
         irene_anim_controllor.SetTrigger("IsMotion");
         StartCoroutine(GoToMain());
     }
+    public void OffProfile()
+    {
+        profile_animation.SetActive(false);
+    }
+    public void OnApply()
+    {
+        isApply = true;
+    }
     IEnumerator GoToMain()
     {
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("Select");
     }
 }

@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Profile
+  m_Name: 1_Profile_Atlas
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -278,7 +278,6 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 3be677040c5e304438d0eeaebc41f716, type: 3}
     - {fileID: 2800000, guid: d3553b41362ac304a9f15d7b875f72e9, type: 3}
     - {fileID: 2800000, guid: e6cd9b1bf9788e54789d0c1433711339, type: 3}
-    - {fileID: 2800000, guid: a0be98c18a7a5234c805615ec7145ec0, type: 3}
     - {fileID: 2800000, guid: e0bae5f7bccd8334c938f0530e1f6fa8, type: 3}
     - {fileID: 2800000, guid: f67de4804e06dbf4db9ad170b3cf232c, type: 3}
     - {fileID: 2800000, guid: 9dbdb70ef6ce2da41b260d23ff569b62, type: 3}
@@ -656,13 +655,14 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 9da5536d7249a4c41a037971c12b307a, type: 3}
     - {fileID: 2800000, guid: 31a5089a018e26044bccea379019d4c2, type: 3}
     - {fileID: 2800000, guid: aee5c9a6673c12a408f8434be81c22f4, type: 3}
+    - {fileID: 2800000, guid: a0be98c18a7a5234c805615ec7145ec0, type: 3}
     - {fileID: 2800000, guid: 1588c95f148ef8f45abcee76937df344, type: 3}
     - {fileID: 2800000, guid: c089ab49420f6174791d1fae09950a42, type: 3}
     - {fileID: 2800000, guid: f7b2c278dbaec86448206cdfa7e9dd0a, type: 3}
     - {fileID: 2800000, guid: 269fe722c34c8254e9c7a50ffe3755cb, type: 3}
     - {fileID: 2800000, guid: 4cb455b5284be5b41bbe3647fba31bdf, type: 3}
-    - {fileID: 2800000, guid: 95e7f84a2f5ee8a4a95c9aadec16cc04, type: 3}
     - {fileID: 2800000, guid: 0f6227eeb28c39b4f8b563eb62a289ec, type: 3}
+    - {fileID: 2800000, guid: 95e7f84a2f5ee8a4a95c9aadec16cc04, type: 3}
     - {fileID: 2800000, guid: 0292068aefc3ce94b90e3e9213a99807, type: 3}
     - {fileID: 2800000, guid: e5f50dd69f6f39e4e9a1d1c6ce178f42, type: 3}
     - {fileID: 2800000, guid: 77fddbd2c058ba543954e21d0cf634ca, type: 3}
@@ -1344,10 +1344,10 @@ SpriteAtlas:
   m_PackedSpriteNamesToIndex:
   - Velfinodon-Wind
   - Aschubel_Icon
-  - miriam
+  - Miriam
   - Ariel_Icon
   - Celia_Icon
-  - beelzebub
+  - Beelzebub
   - Lisa-Fire-New
   - Khmun-Fire
   - Tian-Lang-Light
@@ -1355,155 +1355,155 @@ SpriteAtlas:
   - Sorin_Icon
   - Iron_Icon
   - Sige-Dark
-  - oliver
+  - Oliver
   - Zephicus-Wind
-  - light-homunculus-support-awakened
-  - maruna
-  - hongyeon
+  - Light_Homunculus
+  - Maruna
+  - Hongyeon
   - Taharus_Icon
   - Duamutef-Fire
-  - nigong
-  - emily
+  - Nigong
+  - Emily
   - Oberon-Light
   - Chamie_Icon
   - Emma-Water-N
-  - ren
+  - Ren
   - Sylvia-Dark-N
   - Jubelle_Icon
   - Namib-Wind
-  - yeonhwa
+  - Yeonhwa
   - Crawler-Dark
   - Xiong-Fei-Fire
-  - songseol
+  - Songseol
   - Ellin_Icon
   - Sian_Icon
-  - jeogun
-  - zen
-  - kyle
+  - Jeogun
+  - Zen
+  - Kyle
   - Aria_Icon
   - Isillen-Dark
-  - vereesa
+  - Vereesa
   - Sophia_Icon
   - Fynn-Water
   - Shailoq_Icon
   - Eleanor_Icon
   - Shamann_Icon
   - Roger_Icon
-  - jackson
+  - Jackson
   - Kunda_Icon
-  - talisman
+  - Talisman
   - Mimirr-Light
   - Herne_Icon
   - Hiro-Light
-  - claire
+  - Claire
   - Isabelle-Dark
   - Cheryl-Light
   - Lyn_Icon
-  - mihyang
+  - Mihyang
   - Helena_Icon
   - Rina_Icon
-  - kaki
+  - Kaki
   - Alicia-Water
   - Lora_Icon
   - Hemos_Icon
   - Nephthys-Dark
   - Shan_Icon
-  - masha
+  - Masha
   - Vidurr_Icon
   - Hwa_Icon
-  - todd
+  - Todd
   - Shakan_Icon
   - Copper_Icon
-  - wolyung
-  - giou
-  - Homunculus_Water_Icon_awakened
+  - Wolyung
+  - Giou
+  - Water_Homunculus
   - Jager-Light
   - Purian_Icon
   - Isael_Icon
-  - hanwul
+  - Hanwul
   - Drogan_Icon
   - Trasar_Icon
-  - kashmir
-  - pungbaek
+  - Kashmir
+  - Pungbaek
   - Mihael_Icon
   - Chandra-Water
   - Felleria_Icon
   - Roid_Icon
   - Miho_Icon
-  - xiana
+  - Xiana
   - Rakaja_Icon
   - Antares_Icon
   - Mara_Icon
   - Wedjat-Light
   - Racuni-Fire
-  - belita
+  - Belita
   - Zaiross_Icon
   - Ophilia_Icon
   - Atenai_Icon
   - Vivachel_Icon
   - Fria_Icon
   - Leo-Wind
-  - riley
+  - Riley
   - Logan-Wind
   - Liebli_Icon
   - Ramagos_Icon
   - Eintau_Icon
-  - magnum
+  - Magnum
   - Randy_Icon
-  - berenice
-  - leah
+  - Berenice
+  - Leah
   - Veromos-Dark
   - Kamatau-Dark
-  - wind-ryu
-  - savannah
+  - Wind_RYU
+  - Savannah
   - Sath_Icon
-  - woonsa
-  - malite
+  - Woonsa
+  - Malite
   - Julianne_Icon
   - Spectra_Icon
   - Loren-Light
   - Stella-Water
-  - dominic
+  - Dominic
   - Rizak_Icon
-  - phenaka
+  - Phenaka
   - ROBO-F29
   - Groggo_Icon-1
-  - christina
+  - Christina
   - Kro_Icon
   - Hyanes_Icon
   - Liesel_Icon
   - Sieq_Icon
-  - tanzaite
+  - Tanzaite
   - Halphas_Icon
-  - craig
+  - Craig
   - Karl-Dark
   - Nubia-Water
   - Lucasha-Fire
-  - borgnine
+  - Borgnine
   - Delphoi_Icon
-  - nora
+  - Nora
   - Adrian-Fire
   - Sonnet_Icon
   - Silver_Icon
-  - douman
+  - Douman
   - Kumar-Fire
-  - suri
-  - melissa
+  - Suri
+  - Melissa
   - Gina_Icon
-  - douglas
+  - Douglas
   - Basalt-Dark
-  - pater
+  - Pater
   - Hina_Icon
   - Isis-Light
-  - eirgar
+  - Eirgar
   - Windy-Wind
   - Nyx-Dark
   - Ermeda_Icon
   - Igmanodon-Fire
   - Giana_Icon
   - Seal_Icon
-  - fire-dhalsim
-  - fire-homunculus-awakened
+  - Fire_DHALSIM
+  - Fire_Homunculus
   - Glinodon-Light
   - Prilea-Wind
   - Shimitae_Icon
@@ -1512,21 +1512,21 @@ SpriteAtlas:
   - Fao_Icon
   - Jun-Fire
   - Kaien_Icon
-  - zenobia
+  - Zenobia
   - Pigma_Icon-1
   - Qebehsenuef-Water
-  - Qitian-Dasheng-Light
-  - bella
+  - Qitian_Dasheng-Light
+  - Bella
   - Ursha_Icon
-  - belial
-  - leona
+  - Belial
+  - Leona
   - Xiao-Lin
-  - dark-homunculus-support-awakened
+  - Dark_Homunculus
   - Lumirecia_Icon
-  - light-ryu
+  - Light_RYU
   - Garok-Dark
   - Teon_Icon
-  - feng-yan
+  - Fengyan
   - Tetra-Water
   - Allen_Icon
   - Ceres_Icon
@@ -1537,31 +1537,31 @@ SpriteAtlas:
   - Kernodon-Water
   - Dagorr_Icon
   - Brandia-Fire
-  - dark-dhalsim
-  - dark-chun-li
+  - Dark_DHALSIM
+  - Dark_CHUN_LI
   - Barque-Wind
-  - yeonhong
-  - fire-ryu
+  - Yeonhong
+  - Fire_RYU
   - Naki-Fire
-  - amber
+  - Amber
   - Bremis_Icon
   - Laika-Fire
-  - sagar
-  - maya
+  - Sagar
+  - Maya
   - Luer_Icon
   - Jaara_Icon
-  - narsha
+  - Narsha
   - Imesety-Wind
   - Perna_Icon
   - Ludo_Icon
   - Aquila-Wind
   - Aqcus-Water
   - Orochi_Icon
-  - chiwu
-  - veronica
+  - Chiwu
+  - Veronica
   - Icares_Icon
   - Gruda_Icon
-  - light-dhalsim
+  - Light_DHALSIMm
   - Tiana-Wind
   - Marble-Light
   - Ritesh-Wind
@@ -1572,7 +1572,7 @@ SpriteAtlas:
   - Triton_Icon
   - Iona_Icon
   - Baretta_Icon
-  - susan
+  - Susan
   - Sahara-Light
   - Bombay
   - Chacha-Dark
@@ -1589,35 +1589,35 @@ SpriteAtlas:
   - Carrack-Fire
   - Lanett-Dark
   - Ramahan_Icon
-  - kinki
-  - carlos
-  - mookwol
+  - Kinki
+  - Carlos
+  - Mookwol
   - Akia_Icon
   - Fedora_Icon-1
   - Theomars-Water
   - Olivia-Wind-N
   - Siamese
-  - lariel
+  - Lariel
   - Grego_Icon
   - Trevor-Fire
   - Priz_Icon
-  - daphnis
-  - water-dhalsim
+  - Daphnis
+  - Water_DHALSIM
   - Sharron_Icon
-  - minato
+  - Minato
   - Raviti-Wind
   - Selena_Icon
   - Tesarion-Fire
   - Lukan_Icon
   - Asima-Light
   - Jeanne_Icon
-  - wind-m-bison
-  - teshar
+  - Wind_M.BISON
+  - Teshar
   - Tien_Qin_Icon
   - Amelia_Icon
   - Elucia_Icon-1
   - Avaris-Water
-  - hwahee
+  - Hwahee
   - Tatu-Fire
   - Chloe_Icon
   - Grotau_Icon
@@ -1630,7 +1630,7 @@ SpriteAtlas:
   - Reno-water
   - Camules_Icon
   - Poseidon-Water
-  - birman
+  - Birman
   - Bering-Dark
   - Aegir-Water
   - Psamathe-Water
@@ -1642,15 +1642,15 @@ SpriteAtlas:
   - Morris_Icon
   - Lupinus-Wind
   - Vanessa_Icon
-  - moore
-  - barbara
-  - sonia
-  - nana
-  - cheongpung
+  - Moore
+  - Barbara
+  - Sonia
+  - Nana
+  - Cheongpung
   - Velajuel_Icon
   - Natalie-Light
-  - Hong-Hua-Fire
-  - bael
+  - Honghua
+  - Bael
   - Janssen_Icon
   - Nicki_Icon
   - Chichi-Wind
@@ -1661,18 +1661,18 @@ SpriteAtlas:
   - Sera-Water
   - Xiao_Ling_Icon
   - Karakum-Dark
-  - woochi
+  - Woochi
   - Samour_Icon
-  - karnal
+  - Karnal
   - Huga_Icon
-  - hekerson
+  - Hekerson
   - Orion-Water
   - Harmonia_Icon
   - Driller-Light
-  - cordelia
+  - Cordelia
   - Gemini-Light
   - Laima_Icon
-  - dorothy
+  - Dorothy
   - Juno_Icon
   - Wayne_Icon
   - Akroma_Icon
@@ -1687,13 +1687,13 @@ SpriteAtlas:
   - Silia_Icon
   - Iunu-Wind
   - Dias_Icon
-  - fire-m-bison
+  - Fire_M.BISON
   - Ryan-Water
   - Sin-Fire
   - Mei_Icon
   - Fuco_Icon
   - Bethony_Icon
-  - coco
+  - Coco
   - Arkajan_Icon
   - Rebecca_Icon
   - Fami_Icon
@@ -1707,8 +1707,8 @@ SpriteAtlas:
   - Kaz-Water
   - Tanya-Wind
   - Kuhn_Icon-1
-  - water-ryu
-  - onyx
+  - Water_RYU
+  - Onyx
   - Shushu-Light
   - Ragion_Icon
   - Amduat-Dark
@@ -1722,128 +1722,128 @@ SpriteAtlas:
   - Kungen_Icon
   - Lusha_Icon
   - Susano_Icon
-  - cayde
+  - Cayde
   - Dagora_Icon
   - Kugo_Icon
   - Argen_Icon
   - Bernard_Icon
   - Nisha_Icon
   - Raoq_Icon
-  - ongyouki
+  - Ongyouki
   - Shren_Icon-1
-  - scarlett
+  - Scarlett
   - Katarina_Icon
-  - hannam
-  - light-m-bison1
+  - Hannam
+  - Light_M.BISON
   - Skogul_Icon
-  - taranys
+  - Taranys
   - Yaku_Icon
   - Jumaline_Icon
   - Lapis-Water
-  - john
-  - ritsu
-  - abellio
+  - John
+  - Ritsu
+  - Abellio
   - Sisroo_Icon
-  - destiny
+  - Destiny
   - Jojo-Fire
   - Figaro_Icon
   - Jackie-Dark
   - Baekdu_Icon
-  - fuuki
-  - fire-ken
+  - Fuuki
+  - Fire_KEN
   - Izaria_Icon
   - Jultan_Icon
   - Shihwa_Icon
   - Cogma-Fire
   - Decamaron_Icon
-  - talia
+  - Talia
   - Eludain_Icon
-  - deva
-  - wind-chun-li-1
-  - belladeon
-  - shun
-  - nangrim
+  - Deva
+  - Wind_CHUN_LI
+  - Belladeon
+  - Shun
+  - Nangrim
   - Manannan-Dark
   - Garoche_Icon
-  - wind-homunculus-awakened
+  - Wind_Homunculus
   - Zerath_Icon
   - Kuna-Dark
-  - water-chun-li
+  - Water_CHUN_LI
   - Herteit_Icon
   - Son_Zhang_Lao_Icon
   - Talia_Icon
-  - kiki
+  - Kiki
   - Jamie_Icon
   - Hellea-Dark
-  - fire-chun-li
-  - vancliffe
+  - Fire_CHUN_LI
+  - Vancliffe
   - Charlotte_Icon
   - Varus_Icon
   - Dusky-Dark
-  - aaliyah
+  - Aaliyah
   - Anduril_Icon
-  - celine
+  - Celine
   - Granite-Fire
   - Rahul-Dark
   - Hiva_Icon
   - Okeanos-Fire
-  - sabrina
-  - suiki
+  - Sabrina
+  - Suiki
   - Diana_Icon
   - Astar-Fire
   - Eredas_Icon
   - Imp-Champion-Light
   - Hathor-Wind
   - Gin_Icon
-  - woosa
-  - mephisto
+  - Woosa
+  - Mephisto
   - Fei-Dark
   - Malaka-Water
-  - maximilian
-  - bailey
+  - Maximilian
+  - Bailey
   - Neal_Icon
-  - martina
+  - Martina
   - Mo-Long-Water
   - Gamir_Icon
   - Betta-Dark
   - Eluin-Water
   - Erwin-Wind
   - Misty-Light
-  - dark-m-bison
+  - Dark_M.BISON
   - Kacey-Water
-  - chow
+  - Chow
   - Acasis_Icon
   - Nickel_Icon
   - Icaru_Icon
   - Haken_Icon
   - Verad_Icon
   - Anavel_Icon
-  - dark-ryu
+  - Dark_RYU
   - Kaimann_Icon
   - Draco-Fire
-  - gurkha
+  - Gurkha
   - Han_Icon
-  - valantis
+  - Valantis
   - Tablo_Icon
   - Einheri_Icon
   - Walkers_Icon
   - Tarq_Icon
-  - liam
+  - Liam
   - Rica_Icon
   - Eladriel_Icon
   - Dover-Light
   - Sekhmet-Fire
   - Lamor_Icon
   - Clara_Icon
-  - covenant
+  - Covenant
   - Dona-Light
   - Ragdoll-Dark
   - Taru-Light
   - Illianna_Icon
   - Elpuria_Icon
   - Lucas-Light
-  - camilla
-  - bellenus
+  - Camilla
+  - Bellenus
   - Lo-Wind
   - Ganymede-Wind
   - Surtr-Fire
@@ -1851,63 +1851,63 @@ SpriteAtlas:
   - ROBO-P27
   - Kahli_Icon
   - Iselia_Icon
-  - woonhak
+  - Woonhak
   - Iris-Light
   - Tractor-Water
-  - dongbaek
+  - Dongbaek
   - Zinc_Icon
-  - abigail
+  - Abigail
   - ROBO-E65
   - Prom_Icon
   - Bastet-Water
-  - jarrett
-  - bernadotte
+  - Jarrett
+  - Bernadotte
   - Cadiz_Icon
   - Bolverk_Icon
-  - hwadam
-  - manx
+  - Hwadam
+  - Manx
   - Xiao-Chun-Fire
   - Ramira-Water
-  - ella
+  - Ella
   - Icasha_Icon
   - Thrain_Icon
-  - haegang
+  - Haegang
   - Geldnir_Icon
   - Rasheed_Icon
   - Loque-Dark
   - Linda_Icon
-  - seimei
+  - Seimei
   - Ignicus-Fire
-  - chasun
+  - Chasun
   - Beth-Water
   - Ran_Icon
   - Pang_Icon
-  - benedict
+  - Benedict
   - Yen_Icon
   - Daharenos_Icon
   - Mina_Icon
   - Mi-Ying-Dark
-  - carbine
+  - Carbine
   - Walter_Icon
   - Mikene_Icon
-  - deborah
+  - Deborah
   - Smokey-Fire
   - Julien_Icon
-  - shizuka
-  - mirinae
+  - Shizuka
+  - Mirinae
   - Sharman_Icon
   - Crane-Wind
   - Hrungnir-Dark
   - Elenoa-Light
   - Huan_Icon-1
   - Remy-Water
-  - kunite
+  - Kunite
   - Liu-Mei-Light
   - Trinity_Icon
   - Nebelung
   - Monte_Icon
   - Shamar_Icon
-  - miles
+  - Miles
   - Ling-Ling-Wind
   - Shi-Hou-Water
   - Shazam-Light
@@ -1924,14 +1924,14 @@ SpriteAtlas:
   - Chris_Icon
   - Julie_Icon
   - Shumar_Icon
-  - tomoe
-  - gangchun
+  - Tomoe
+  - Gangchun
   - Kumae_Icon
   - Jamire_Icon
   - Craka-Dark
   - Lulu-Water
   - Cassandra_Icon
-  - daniel
+  - Daniel
   - Colleen_Icon
   - Galleon-Water
   - Seara_Icon
@@ -1940,7 +1940,7 @@ SpriteAtlas:
   - Chilling-Water
   - Shannon-Wind
   - Jansson_Icon
-  - light-chun-li
+  - Light_CHUN_LI
   - Burentau-Fire
   - Artamiel_Icon
   - Jean_Icon
@@ -1949,13 +1949,13 @@ SpriteAtlas:
   - Mei_Hou_Wang_Icon
   - Mao-Water
   - Megan_Icon
-  - wind-dhalsim
+  - Wind-DHALSIM
   - Praha_Icon
-  - shaina
+  - Shaina
   - Mellia_Icon
-  - carcano
+  - Carcano
   - Pontos-Light
-  - lucifer
+  - Lucifer
   - Lagmaron_Icon
   - Camaryn-Dark
   - Moria_Icon
@@ -1965,18 +1965,18 @@ SpriteAtlas:
   - Lexy-Fire
   - Amarna-Light
   - Mav-Wind
-  - water-m-bison
+  - Water_M.BISON
   - Aeilene_Icon
-  - gunpyeong
+  - Gunpyeong
   - Guillaume_Icon
-  - momo
-  - dragunov
+  - Momo
+  - Dragunov
   - Calicus-Dark
   - Triana_Icon
   - Bulldozer-Fire
-  - gildong
+  - Gildong
   - Tigresse_Icon
-  - madeleine
+  - Madeleine
   - Kamiya_Icon
   - Rigel_Icon
   - Josephine_Icon
@@ -1990,5 +1990,5 @@ SpriteAtlas:
   - Talc-Water
   - Zeratu_Icon
   - Tyron_Icon
-  m_Tag: Profile
+  m_Tag: 1_Profile_Atlas
   m_IsVariant: 0

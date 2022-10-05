@@ -25,8 +25,8 @@ public class artifact_dropdown_control : MonoBehaviour
     {
         StatCheckFunction_UI(dropdown.value);
         stat_value = dropdown.value;
-        string op = select.options[select.value].text;
-        Debug.Log("Dropdown Change!\n" + op);
+        //string op = select.options[select.value].text;
+        //Debug.Log("Dropdown Change!\n" + op);
     }
 
     private void StatCheckFunction_UI(int value)
