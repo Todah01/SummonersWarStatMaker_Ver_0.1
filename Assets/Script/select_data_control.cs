@@ -22,6 +22,7 @@ public class select_data_control : MonoBehaviour
     public GameObject selected_prefer_stat_bg;
     public GameObject pirate;
     public GameObject word_bubble;
+    public GameObject monster_name_drop;
     public List<int> rune_dropdown_values;
     public List<string> rune_type;
     public List<string> even_rune_stat_type;
@@ -49,6 +50,15 @@ public class select_data_control : MonoBehaviour
     }
     public void Cal_Start()
     {
+        string temp_name = monster_name_drop.GetComponent<monster_dropdown_control>().monster_name_by_value;
+        string monster_name = "";
+        for (int idx = 0; idx < temp_name.Length; idx++)
+        {
+            if (temp_name[idx] == '(')
+                break;
+            monster_name += temp_name[idx];
+        }
+        
         foreach (var obj in rune_slots)
         {
             if (obj.GetComponent<rune_slot_control>().dropdown_value != 0)
@@ -91,7 +101,7 @@ public class select_data_control : MonoBehaviour
 
         // Debug.Log(rune_dropdown_values.Count + " " + even_rune_stat_type.Count + " " + prefer_stat_type.Count);
 
-        selected_monster.text = "Water Ryu";
+        selected_monster.text = monster_name;
         selected_rune_set.text = string.Join("\n\n", rune_type);
         selected_rune_set_stat.text = string.Join("\n\n", even_rune_stat_type);
         selected_stat.text = string.Join(", ", prefer_stat_type);

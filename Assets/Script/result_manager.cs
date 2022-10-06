@@ -14,7 +14,7 @@ public class result_manager : MonoBehaviour
     public Image rune_img_slot;
     public Image rune_img_pattern;
     public Image monster_profile;
-    public Text monster_name;
+    public Text monster_name_txt;
     public Text rune_stat_name;
     public Text pre_option_stat;
     public Text first_rune_stat_name;
@@ -28,6 +28,7 @@ public class result_manager : MonoBehaviour
     public Text[] monster_stats_divide;
     public Text[] monster_plus_stats_divide;
     public Text[] monster_stats_combine;
+    public Sprite[] monster_profiles;
     public int left_artifact_dropdown_values = 0, right_artifact_dropdown_values = 0;
     public int cur_hp, cur_atk, cur_def, cur_spd, cur_crirate, cur_cridmg, cur_res, cur_acc;
     #endregion
@@ -43,6 +44,7 @@ public class result_manager : MonoBehaviour
     List<string> even_rune_stat_type;
     List<string> prefer_stat_type;
     int plus_hp, plus_atk, plus_def, plus_spd, plus_crirate, plus_cridmg, plus_res, plus_acc;
+    string monster_name = "";
     #endregion
     private void Start()
     {
@@ -81,6 +83,7 @@ public class result_manager : MonoBehaviour
     public void Start_StatSetting()
     {
         // get selected data
+        monster_name = selected_data.GetComponent<select_data_control>().selected_monster.text;
         rune_type = selected_data.GetComponent<select_data_control>().rune_type;
         even_rune_stat_type = selected_data.GetComponent<select_data_control>().even_rune_stat_type;
         prefer_stat_type = selected_data.GetComponent<select_data_control>().prefer_stat_type;
@@ -110,6 +113,16 @@ public class result_manager : MonoBehaviour
 
         // cal monster stat
         Cal_Stat(rune_type, even_rune_stat_type, prefer_stat_type, cur_hp, cur_atk, cur_def, cur_spd);
+
+        // set monster profile
+        for(int i=0; i<monster_profiles.Length; i++)
+        {
+            if (monster_profiles[i].name.Contains(monster_name))
+            {
+                monster_profile.sprite = monster_profiles[i];
+                break;
+            }
+        }
 
         // set monster stat
         monster_stats_divide[0].text = cur_hp.ToString();
